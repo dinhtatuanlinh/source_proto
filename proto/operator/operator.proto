@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/dinhtatuanlinh/operator/pb";
+
+message Operator {
+  int64 operator_id = 1;
+  string username = 2;
+  string full_name = 3;
+  string email = 4;
+  optional google.protobuf.Timestamp password_changed_at = 5;
+  Role role = 6;
+  string hashed_password = 7;
+  google.protobuf.Timestamp created_at = 8;
+}
+
+message Role {
+  int64 role_id = 1;
+  optional int32 admin = 2;
+  optional int32 operator = 3;
+  optional int32 post = 4;
+  optional int32 notification = 5;
+}

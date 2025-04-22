@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pb;
+
+import "rpc_create_operator.proto";
+import "rpc_verify_operator.proto";
+import "rpc_get_operator.proto";
+
+option go_package = "github.com/dinhtatuanlinh/operator/pb";
+
+service Source {
+  rpc RPCCreateOperator (CreateOperatorRequest) returns (CreateOperatorResponse) {}
+  rpc RPCVerifyOperator (VerifyOperatorRequest) returns (VerifyOperatorResponse) {}
+  rpc RPCGetOperator (GetOperatorRequest) returns (GetOperatorResponse) {}
+  rpc RPCCreateAdmin (CreateOperatorRequest) returns (CreateOperatorResponse) {}
+}

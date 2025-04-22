@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/dinhtatuanlinh/operator/pb";
+
+message VerifyOperatorRequest {
+  int64 operator_id = 1;
+  string secret_code = 2;
+}
+
+message VerifyOperatorResponse {
+  bool is_verified = 1;
+}

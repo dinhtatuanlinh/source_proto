@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pb;
+
+import "operator.proto";
+
+option go_package = "github.com/dinhtatuanlinh/operator/pb";
+
+message GetOperatorRequest {
+  optional int64 operator_id = 1;
+  optional string operator_username = 2;
+}
+
+message GetOperatorResponse {
+  Operator operator = 1;
+}

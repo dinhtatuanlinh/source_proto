@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package pb;
+
+import "operator.proto";
+
+option go_package = "github.com/dinhtatuanlinh/operator/pb";
+
+message CreateOperatorRequest {
+  string username = 1;
+  string full_name = 2;
+  string email = 3;
+  string phone_number = 4;
+  CreateRoleRequest role = 5;
+  string password = 6;
+}
+
+message CreateRoleRequest {
+  optional int32 admin = 1;
+  optional int32 operator = 2;
+  optional int32 post = 3;
+  optional int32 notification = 4;
+}
+
+message CreateOperatorResponse {
+  Operator operator = 1;
+  string password = 2;
+  string secret_code = 3;
+}
+
+
