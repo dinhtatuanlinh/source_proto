@@ -6,7 +6,7 @@ import "rpc_create_operator.proto";
 import "rpc_verify_operator.proto";
 import "rpc_get_operator.proto";
 
-option go_package = "github.com/dinhtatuanlinh/operator/pb";
+option go_package = "github.com/dinhtatuanlinh/source_proto";
 
 service Source {
   rpc RPCCreateOperator (CreateOperatorRequest) returns (CreateOperatorResponse) {}

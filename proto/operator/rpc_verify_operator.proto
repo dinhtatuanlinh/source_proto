@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package pb;
 
-option go_package = "github.com/dinhtatuanlinh/operator/pb";
+option go_package = "github.com/dinhtatuanlinh/source_proto";
 
 message VerifyOperatorRequest {
   int64 operator_id = 1;

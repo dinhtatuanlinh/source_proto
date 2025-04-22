@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: service.proto
 
-package pb
+package source_proto
 
 import (
 	context "context"

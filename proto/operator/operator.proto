@@ -4,7 +4,7 @@ package pb;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/dinhtatuanlinh/operator/pb";
+option go_package = "github.com/dinhtatuanlinh/source_proto";
 
 message Operator {
   int64 operator_id = 1;
