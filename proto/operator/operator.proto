@@ -24,3 +24,16 @@ message Role {
   optional int32 post = 4;
   optional int32 notification = 5;
 }
+
+message OperatorList {
+  int64 operator_id = 1;
+  string username = 2;
+  string full_name = 3;
+  string email = 4;
+  optional google.protobuf.Timestamp password_changed_at = 5;
+  google.protobuf.Timestamp created_at = 6;
+  bool is_first_access = 7;
+  bool is_email_verify = 8;
+  string status = 9;
+  Role role = 10;
+}

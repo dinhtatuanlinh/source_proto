@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package pb;
+
+import "operator.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message GetOperatorListRequest {
+  optional int64 operator_id = 1;
+  optional string search = 2;
+  optional string status = 3;
+  optional string phone_number = 4;
+}
+
+message GetOperatorListResponse {
+  OperatorList operator = 1;
+}
+

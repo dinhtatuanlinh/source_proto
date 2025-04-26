@@ -5,12 +5,22 @@ package pb;
 import "rpc_create_operator.proto";
 import "rpc_verify_operator.proto";
 import "rpc_get_operator.proto";
+import "rpc_get_operator_list.proto";
+import "rpc_update_operator.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
 service Source {
-  rpc RPCCreateOperator (CreateOperatorRequest) returns (CreateOperatorResponse) {}
-  rpc RPCVerifyOperator (VerifyOperatorRequest) returns (VerifyOperatorResponse) {}
-  rpc RPCGetOperator (GetOperatorRequest) returns (GetOperatorResponse) {}
+  //  op000001
   rpc RPCCreateAdmin (CreateOperatorRequest) returns (CreateOperatorResponse) {}
+  //  op000002
+  rpc RPCCreateOperator (CreateOperatorRequest) returns (CreateOperatorResponse) {}
+  //  op000003
+  rpc RPCVerifyOperator (VerifyOperatorRequest) returns (VerifyOperatorResponse) {}
+  //  op000004
+  rpc RPCGetOperator (GetOperatorRequest) returns (GetOperatorResponse) {}
+//  op000005
+  rpc RPCGetOperatorList (GetOperatorListRequest) returns (GetOperatorListResponse) {}
+//  op000006
+  rpc RPCUpdateOperator (UpdateOperatorRequest) returns (UpdateOperatorResponse) {}
 }

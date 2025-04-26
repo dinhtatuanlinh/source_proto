@@ -19,20 +19,30 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Source_RPCCreateOperator_FullMethodName = "/pb.Source/RPCCreateOperator"
-	Source_RPCVerifyOperator_FullMethodName = "/pb.Source/RPCVerifyOperator"
-	Source_RPCGetOperator_FullMethodName    = "/pb.Source/RPCGetOperator"
-	Source_RPCCreateAdmin_FullMethodName    = "/pb.Source/RPCCreateAdmin"
+	Source_RPCCreateAdmin_FullMethodName     = "/pb.Source/RPCCreateAdmin"
+	Source_RPCCreateOperator_FullMethodName  = "/pb.Source/RPCCreateOperator"
+	Source_RPCVerifyOperator_FullMethodName  = "/pb.Source/RPCVerifyOperator"
+	Source_RPCGetOperator_FullMethodName     = "/pb.Source/RPCGetOperator"
+	Source_RPCGetOperatorList_FullMethodName = "/pb.Source/RPCGetOperatorList"
+	Source_RPCUpdateOperator_FullMethodName  = "/pb.Source/RPCUpdateOperator"
 )
 
 // SourceClient is the client API for Source service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SourceClient interface {
-	RPCCreateOperator(ctx context.Context, in *CreateOperatorRequest, opts ...grpc.CallOption) (*CreateOperatorResponse, error)
-	RPCVerifyOperator(ctx context.Context, in *VerifyOperatorRequest, opts ...grpc.CallOption) (*VerifyOperatorResponse, error)
-	RPCGetOperator(ctx context.Context, in *GetOperatorRequest, opts ...grpc.CallOption) (*GetOperatorResponse, error)
+	// op000001
 	RPCCreateAdmin(ctx context.Context, in *CreateOperatorRequest, opts ...grpc.CallOption) (*CreateOperatorResponse, error)
+	// op000002
+	RPCCreateOperator(ctx context.Context, in *CreateOperatorRequest, opts ...grpc.CallOption) (*CreateOperatorResponse, error)
+	// op000003
+	RPCVerifyOperator(ctx context.Context, in *VerifyOperatorRequest, opts ...grpc.CallOption) (*VerifyOperatorResponse, error)
+	// op000004
+	RPCGetOperator(ctx context.Context, in *GetOperatorRequest, opts ...grpc.CallOption) (*GetOperatorResponse, error)
+	// op000005
+	RPCGetOperatorList(ctx context.Context, in *GetOperatorListRequest, opts ...grpc.CallOption) (*GetOperatorListResponse, error)
+	// op000006
+	RPCUpdateOperator(ctx context.Context, in *UpdateOperatorRequest, opts ...grpc.CallOption) (*UpdateOperatorResponse, error)
 }
 
 type sourceClient struct {
@@ -41,6 +51,16 @@ type sourceClient struct {
 
 func NewSourceClient(cc grpc.ClientConnInterface) SourceClient {
 	return &sourceClient{cc}
+}
+
+func (c *sourceClient) RPCCreateAdmin(ctx context.Context, in *CreateOperatorRequest, opts ...grpc.CallOption) (*CreateOperatorResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateOperatorResponse)
+	err := c.cc.Invoke(ctx, Source_RPCCreateAdmin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *sourceClient) RPCCreateOperator(ctx context.Context, in *CreateOperatorRequest, opts ...grpc.CallOption) (*CreateOperatorResponse, error) {
@@ -73,10 +93,20 @@ func (c *sourceClient) RPCGetOperator(ctx context.Context, in *GetOperatorReques
 	return out, nil
 }
 
-func (c *sourceClient) RPCCreateAdmin(ctx context.Context, in *CreateOperatorRequest, opts ...grpc.CallOption) (*CreateOperatorResponse, error) {
+func (c *sourceClient) RPCGetOperatorList(ctx context.Context, in *GetOperatorListRequest, opts ...grpc.CallOption) (*GetOperatorListResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateOperatorResponse)
-	err := c.cc.Invoke(ctx, Source_RPCCreateAdmin_FullMethodName, in, out, cOpts...)
+	out := new(GetOperatorListResponse)
+	err := c.cc.Invoke(ctx, Source_RPCGetOperatorList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *sourceClient) RPCUpdateOperator(ctx context.Context, in *UpdateOperatorRequest, opts ...grpc.CallOption) (*UpdateOperatorResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateOperatorResponse)
+	err := c.cc.Invoke(ctx, Source_RPCUpdateOperator_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -87,10 +117,18 @@ func (c *sourceClient) RPCCreateAdmin(ctx context.Context, in *CreateOperatorReq
 // All implementations must embed UnimplementedSourceServer
 // for forward compatibility.
 type SourceServer interface {
-	RPCCreateOperator(context.Context, *CreateOperatorRequest) (*CreateOperatorResponse, error)
-	RPCVerifyOperator(context.Context, *VerifyOperatorRequest) (*VerifyOperatorResponse, error)
-	RPCGetOperator(context.Context, *GetOperatorRequest) (*GetOperatorResponse, error)
+	// op000001
 	RPCCreateAdmin(context.Context, *CreateOperatorRequest) (*CreateOperatorResponse, error)
+	// op000002
+	RPCCreateOperator(context.Context, *CreateOperatorRequest) (*CreateOperatorResponse, error)
+	// op000003
+	RPCVerifyOperator(context.Context, *VerifyOperatorRequest) (*VerifyOperatorResponse, error)
+	// op000004
+	RPCGetOperator(context.Context, *GetOperatorRequest) (*GetOperatorResponse, error)
+	// op000005
+	RPCGetOperatorList(context.Context, *GetOperatorListRequest) (*GetOperatorListResponse, error)
+	// op000006
+	RPCUpdateOperator(context.Context, *UpdateOperatorRequest) (*UpdateOperatorResponse, error)
 	mustEmbedUnimplementedSourceServer()
 }
 
@@ -101,6 +139,9 @@ type SourceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedSourceServer struct{}
 
+func (UnimplementedSourceServer) RPCCreateAdmin(context.Context, *CreateOperatorRequest) (*CreateOperatorResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCCreateAdmin not implemented")
+}
 func (UnimplementedSourceServer) RPCCreateOperator(context.Context, *CreateOperatorRequest) (*CreateOperatorResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCCreateOperator not implemented")
 }
@@ -110,8 +151,11 @@ func (UnimplementedSourceServer) RPCVerifyOperator(context.Context, *VerifyOpera
 func (UnimplementedSourceServer) RPCGetOperator(context.Context, *GetOperatorRequest) (*GetOperatorResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCGetOperator not implemented")
 }
-func (UnimplementedSourceServer) RPCCreateAdmin(context.Context, *CreateOperatorRequest) (*CreateOperatorResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RPCCreateAdmin not implemented")
+func (UnimplementedSourceServer) RPCGetOperatorList(context.Context, *GetOperatorListRequest) (*GetOperatorListResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCGetOperatorList not implemented")
+}
+func (UnimplementedSourceServer) RPCUpdateOperator(context.Context, *UpdateOperatorRequest) (*UpdateOperatorResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCUpdateOperator not implemented")
 }
 func (UnimplementedSourceServer) mustEmbedUnimplementedSourceServer() {}
 func (UnimplementedSourceServer) testEmbeddedByValue()                {}
@@ -132,6 +176,24 @@ func RegisterSourceServer(s grpc.ServiceRegistrar, srv SourceServer) {
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&Source_ServiceDesc, srv)
+}
+
+func _Source_RPCCreateAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateOperatorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SourceServer).RPCCreateAdmin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Source_RPCCreateAdmin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SourceServer).RPCCreateAdmin(ctx, req.(*CreateOperatorRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Source_RPCCreateOperator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -188,20 +250,38 @@ func _Source_RPCGetOperator_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Source_RPCCreateAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateOperatorRequest)
+func _Source_RPCGetOperatorList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetOperatorListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SourceServer).RPCCreateAdmin(ctx, in)
+		return srv.(SourceServer).RPCGetOperatorList(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Source_RPCCreateAdmin_FullMethodName,
+		FullMethod: Source_RPCGetOperatorList_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SourceServer).RPCCreateAdmin(ctx, req.(*CreateOperatorRequest))
+		return srv.(SourceServer).RPCGetOperatorList(ctx, req.(*GetOperatorListRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Source_RPCUpdateOperator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateOperatorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SourceServer).RPCUpdateOperator(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Source_RPCUpdateOperator_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SourceServer).RPCUpdateOperator(ctx, req.(*UpdateOperatorRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -213,6 +293,10 @@ var Source_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.Source",
 	HandlerType: (*SourceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "RPCCreateAdmin",
+			Handler:    _Source_RPCCreateAdmin_Handler,
+		},
 		{
 			MethodName: "RPCCreateOperator",
 			Handler:    _Source_RPCCreateOperator_Handler,
@@ -226,8 +310,12 @@ var Source_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Source_RPCGetOperator_Handler,
 		},
 		{
-			MethodName: "RPCCreateAdmin",
-			Handler:    _Source_RPCCreateAdmin_Handler,
+			MethodName: "RPCGetOperatorList",
+			Handler:    _Source_RPCGetOperatorList_Handler,
+		},
+		{
+			MethodName: "RPCUpdateOperator",
+			Handler:    _Source_RPCUpdateOperator_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
