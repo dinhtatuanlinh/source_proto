@@ -34,6 +34,6 @@ message OperatorList {
   google.protobuf.Timestamp created_at = 6;
   bool is_first_access = 7;
   bool is_email_verified = 8;
-  string status = 9;
+  optional string status = 9;
   Role role = 10;
 }
