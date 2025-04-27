@@ -3,11 +3,13 @@ syntax = "proto3";
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
 message UpdateOperatorRequest {
-  optional string email = 1;
-  optional string phone_number = 2;
-  optional string old_password = 3;
-  optional string new_password = 4;
-  UpdateRole role = 5;
+  int64 operator_id = 1;
+  optional string email = 2;
+  optional string phone_number = 3;
+  optional string old_password = 4;
+  optional string new_password = 5;
+  optional string status = 6;
+  UpdateRole role = 7;
 }
 
 message UpdateRole {
