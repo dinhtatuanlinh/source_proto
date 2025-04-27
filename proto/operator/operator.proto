@@ -36,4 +36,5 @@ message OperatorList {
   bool is_email_verified = 8;
   optional string status = 9;
   Role role = 10;
+  string phone_number = 11;
 }
