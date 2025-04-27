@@ -33,7 +33,7 @@ message OperatorList {
   optional google.protobuf.Timestamp password_changed_at = 5;
   google.protobuf.Timestamp created_at = 6;
   bool is_first_access = 7;
-  bool is_email_verify = 8;
+  bool is_email_verified = 8;
   string status = 9;
   Role role = 10;
 }

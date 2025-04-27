@@ -2,5 +2,7 @@ proto:
 	rm -f pkg/operatorpb/*.go
 	protoc --proto_path=proto/operator --go_out=pkg/operatorpb --go_opt=paths=source_relative --go-grpc_out=pkg/operatorpb \
 	--go-grpc_opt=paths=source_relative proto/operator/*.proto
-
-.PHONY: proto
+push:
+	git tag v1.0.1
+	git push origin v1.0.1
+.PHONY: proto push
