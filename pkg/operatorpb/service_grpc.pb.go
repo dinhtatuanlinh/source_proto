@@ -19,12 +19,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Source_RPCCreateAdmin_FullMethodName     = "/pb.Source/RPCCreateAdmin"
-	Source_RPCCreateOperator_FullMethodName  = "/pb.Source/RPCCreateOperator"
-	Source_RPCVerifyOperator_FullMethodName  = "/pb.Source/RPCVerifyOperator"
-	Source_RPCGetOperator_FullMethodName     = "/pb.Source/RPCGetOperator"
-	Source_RPCGetOperatorList_FullMethodName = "/pb.Source/RPCGetOperatorList"
-	Source_RPCUpdateOperator_FullMethodName  = "/pb.Source/RPCUpdateOperator"
+	Source_RPCCreateAdmin_FullMethodName                = "/pb.Source/RPCCreateAdmin"
+	Source_RPCCreateOperator_FullMethodName             = "/pb.Source/RPCCreateOperator"
+	Source_RPCVerifyOperator_FullMethodName             = "/pb.Source/RPCVerifyOperator"
+	Source_RPCGetOperator_FullMethodName                = "/pb.Source/RPCGetOperator"
+	Source_RPCGetOperatorList_FullMethodName            = "/pb.Source/RPCGetOperatorList"
+	Source_RPCUpdateOperator_FullMethodName             = "/pb.Source/RPCUpdateOperator"
+	Source_RPCResendOperatorVerification_FullMethodName = "/pb.Source/RPCResendOperatorVerification"
 )
 
 // SourceClient is the client API for Source service.
@@ -43,6 +44,8 @@ type SourceClient interface {
 	RPCGetOperatorList(ctx context.Context, in *GetOperatorListRequest, opts ...grpc.CallOption) (*GetOperatorListResponse, error)
 	// op000006
 	RPCUpdateOperator(ctx context.Context, in *UpdateOperatorRequest, opts ...grpc.CallOption) (*UpdateOperatorResponse, error)
+	// op000007
+	RPCResendOperatorVerification(ctx context.Context, in *ResendOperatorVerificationRequest, opts ...grpc.CallOption) (*ResendOperatorVerificationResponse, error)
 }
 
 type sourceClient struct {
@@ -113,6 +116,16 @@ func (c *sourceClient) RPCUpdateOperator(ctx context.Context, in *UpdateOperator
 	return out, nil
 }
 
+func (c *sourceClient) RPCResendOperatorVerification(ctx context.Context, in *ResendOperatorVerificationRequest, opts ...grpc.CallOption) (*ResendOperatorVerificationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ResendOperatorVerificationResponse)
+	err := c.cc.Invoke(ctx, Source_RPCResendOperatorVerification_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SourceServer is the server API for Source service.
 // All implementations must embed UnimplementedSourceServer
 // for forward compatibility.
@@ -129,6 +142,8 @@ type SourceServer interface {
 	RPCGetOperatorList(context.Context, *GetOperatorListRequest) (*GetOperatorListResponse, error)
 	// op000006
 	RPCUpdateOperator(context.Context, *UpdateOperatorRequest) (*UpdateOperatorResponse, error)
+	// op000007
+	RPCResendOperatorVerification(context.Context, *ResendOperatorVerificationRequest) (*ResendOperatorVerificationResponse, error)
 	mustEmbedUnimplementedSourceServer()
 }
 
@@ -156,6 +171,9 @@ func (UnimplementedSourceServer) RPCGetOperatorList(context.Context, *GetOperato
 }
 func (UnimplementedSourceServer) RPCUpdateOperator(context.Context, *UpdateOperatorRequest) (*UpdateOperatorResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCUpdateOperator not implemented")
+}
+func (UnimplementedSourceServer) RPCResendOperatorVerification(context.Context, *ResendOperatorVerificationRequest) (*ResendOperatorVerificationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCResendOperatorVerification not implemented")
 }
 func (UnimplementedSourceServer) mustEmbedUnimplementedSourceServer() {}
 func (UnimplementedSourceServer) testEmbeddedByValue()                {}
@@ -286,6 +304,24 @@ func _Source_RPCUpdateOperator_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Source_RPCResendOperatorVerification_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ResendOperatorVerificationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SourceServer).RPCResendOperatorVerification(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Source_RPCResendOperatorVerification_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SourceServer).RPCResendOperatorVerification(ctx, req.(*ResendOperatorVerificationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Source_ServiceDesc is the grpc.ServiceDesc for Source service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -316,6 +352,10 @@ var Source_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RPCUpdateOperator",
 			Handler:    _Source_RPCUpdateOperator_Handler,
+		},
+		{
+			MethodName: "RPCResendOperatorVerification",
+			Handler:    _Source_RPCResendOperatorVerification_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
