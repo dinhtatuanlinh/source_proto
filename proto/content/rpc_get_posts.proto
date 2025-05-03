@@ -8,18 +8,17 @@ import "post.proto";
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
 message GetPostsRequest {
-  optional int64 post_id = 1;
-  repeated int64 post_ids = 2;
-  optional string search = 3;
-  optional string author = 4;
-  optional google.protobuf.Timestamp published_at_from = 5;
-  optional google.protobuf.Timestamp published_at_to = 6;
-  optional int64 tag_id = 7;
-  optional int64 category = 8;
-  optional string sort_by = 9;
-  optional string sort_direction = 10;
-  optional int32 limit = 11;
-  optional int32 offset = 12;
+  repeated int64 post_ids = 1;
+  optional string search = 2;
+  optional string author = 3;
+  optional google.protobuf.Timestamp published_at_from = 4;
+  optional google.protobuf.Timestamp published_at_to = 5;
+  optional int64 tag_id = 6;
+  optional int64 category = 7;
+  optional string sort_by = 8;
+  optional string sort_direction = 9;
+  optional int32 limit = 10;
+  optional int32 offset = 11;
 }
 
 message GetPostsResponse {
