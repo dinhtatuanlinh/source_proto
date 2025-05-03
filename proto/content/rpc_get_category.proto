@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pb;
+
+import "category.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message GetCategoryRequest {
+  optional int64 category_id = 1;
+  optional string name = 2;
+}
+
+message GetCategoryResponse {
+  Category category = 1;
+}

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message Post {
+  int64 post_id = 1;
+  string title = 2;
+  string description = 3;
+  string content = 4;
+  string author = 5;
+  string thumbnail_url = 6;
+  optional google.protobuf.Timestamp published_at = 7;
+  string status = 8;
+  repeated PostCategory categories = 9;
+  repeated PostTag tags = 10;
+}
+
+message PostCategory {
+  int64 category_id = 1;
+  string category_name = 2;
+}
+
+message PostTag {
+  int64 tag_id = 1;
+  string tag_name = 2;
+}

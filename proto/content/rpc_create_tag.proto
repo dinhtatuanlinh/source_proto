@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message CreateTagRequest {
+  string name = 1;
+  string description = 2;
+}
+
+message CreateTagResponse {
+
+}

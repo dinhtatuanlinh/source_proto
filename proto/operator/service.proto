@@ -11,7 +11,7 @@ import "rpc_resend_operator_verification.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
-service Source {
+service OperatorService {
   //  op000001
   rpc RPCCreateAdmin (CreateOperatorRequest) returns (CreateOperatorResponse) {}
   //  op000002

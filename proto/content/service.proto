@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package pb;
+import "rpc_create_post.proto";
+import "rpc_get_post.proto";
+import "rpc_get_posts.proto";
+import "rpc_update_post.proto";
+import "rpc_create_category.proto";
+import "rpc_get_category.proto";
+import "rpc_get_categories.proto";
+import "rpc_update_category.proto";
+import "rpc_create_tag.proto";
+import "rpc_get_tag.proto";
+import "rpc_get_tags.proto";
+import "rpc_update_tag.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+service ContentService {
+  //  CT000001
+  rpc RPCCreatePost (CreatePostRequest) returns (CreatePostResponse) {}
+  //  CT000002
+  rpc RPCGetPost (GetPostRequest) returns (GetPostResponse) {}
+  //  CT000003
+  rpc RPCGetPosts (GetPostsRequest) returns (GetPostsResponse) {}
+  //  CT000004
+  rpc RPCUpdatePost (UpdatePostRequest) returns (UpdatePostResponse) {}
+  //  CT000005
+  rpc RPCCreateCategory (CreateCategoryRequest) returns (CreateCategoryResponse) {}
+  //  CT000006
+  rpc RPCGetCategory (GetCategoryRequest) returns (GetCategoryResponse) {}
+  //  CT000007
+  rpc RPCGetCategories (GetCategoriesRequest) returns (GetCategoriesResponse) {}
+  //  CT000008
+  rpc RPCUpdateCategory (UpdateCategoryRequest) returns (UpdateCategoryResponse) {}
+  //  CT000009
+  rpc RPCCreateTag (CreateTagRequest) returns (CreateTagResponse) {}
+  //  CT000010
+  rpc RPCGetTag (GetTagRequest) returns (GetTagResponse) {}
+  //  CT000011
+  rpc RPCGetTags (GetTagsRequest) returns (GetTagsResponse) {}
+  //  CT000012
+  rpc RPCUpdateTag (UpdateTagRequest) returns (UpdateTagResponse) {}
+}

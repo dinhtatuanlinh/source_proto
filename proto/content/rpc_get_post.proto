@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package pb;
+
+import "post.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message GetPostRequest {
+  optional int64 post_id = 1;
+  optional string title = 2;
+  optional string status = 3;
+}
+
+message GetPostResponse {
+  Post post = 1;
+}

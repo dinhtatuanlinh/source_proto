@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message UpdatePostRequest {
+  optional string title = 1;
+  optional string description = 2;
+  optional string content = 3;
+  optional string thumbnail_url = 4;
+  optional google.protobuf.Timestamp published_at = 5;
+  optional string status = 6;
+  int64 post_id = 7;
+}
+
+message UpdatePostResponse {
+
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package pb;
+
+import "tag.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message GetTagRequest {
+  optional int64 tag_id = 1;
+  optional string name = 2;
+}
+
+message GetTagResponse {
+  Tag tag = 1;
+}
