@@ -19,18 +19,22 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ContentService_RPCCreatePost_FullMethodName     = "/pb.ContentService/RPCCreatePost"
-	ContentService_RPCGetPost_FullMethodName        = "/pb.ContentService/RPCGetPost"
-	ContentService_RPCGetPosts_FullMethodName       = "/pb.ContentService/RPCGetPosts"
-	ContentService_RPCUpdatePost_FullMethodName     = "/pb.ContentService/RPCUpdatePost"
-	ContentService_RPCCreateCategory_FullMethodName = "/pb.ContentService/RPCCreateCategory"
-	ContentService_RPCGetCategory_FullMethodName    = "/pb.ContentService/RPCGetCategory"
-	ContentService_RPCGetCategories_FullMethodName  = "/pb.ContentService/RPCGetCategories"
-	ContentService_RPCUpdateCategory_FullMethodName = "/pb.ContentService/RPCUpdateCategory"
-	ContentService_RPCCreateTag_FullMethodName      = "/pb.ContentService/RPCCreateTag"
-	ContentService_RPCGetTag_FullMethodName         = "/pb.ContentService/RPCGetTag"
-	ContentService_RPCGetTags_FullMethodName        = "/pb.ContentService/RPCGetTags"
-	ContentService_RPCUpdateTag_FullMethodName      = "/pb.ContentService/RPCUpdateTag"
+	ContentService_RPCCreatePost_FullMethodName             = "/pb.ContentService/RPCCreatePost"
+	ContentService_RPCGetPost_FullMethodName                = "/pb.ContentService/RPCGetPost"
+	ContentService_RPCGetPosts_FullMethodName               = "/pb.ContentService/RPCGetPosts"
+	ContentService_RPCUpdatePost_FullMethodName             = "/pb.ContentService/RPCUpdatePost"
+	ContentService_RPCCreateCategory_FullMethodName         = "/pb.ContentService/RPCCreateCategory"
+	ContentService_RPCGetCategory_FullMethodName            = "/pb.ContentService/RPCGetCategory"
+	ContentService_RPCGetCategories_FullMethodName          = "/pb.ContentService/RPCGetCategories"
+	ContentService_RPCUpdateCategory_FullMethodName         = "/pb.ContentService/RPCUpdateCategory"
+	ContentService_RPCCreateTag_FullMethodName              = "/pb.ContentService/RPCCreateTag"
+	ContentService_RPCGetTag_FullMethodName                 = "/pb.ContentService/RPCGetTag"
+	ContentService_RPCGetTags_FullMethodName                = "/pb.ContentService/RPCGetTags"
+	ContentService_RPCUpdateTag_FullMethodName              = "/pb.ContentService/RPCUpdateTag"
+	ContentService_RPCAddPostToCategory_FullMethodName      = "/pb.ContentService/RPCAddPostToCategory"
+	ContentService_RPCRemovePostFromCategory_FullMethodName = "/pb.ContentService/RPCRemovePostFromCategory"
+	ContentService_RPCAddPostToTag_FullMethodName           = "/pb.ContentService/RPCAddPostToTag"
+	ContentService_RPCRemovePostFromTag_FullMethodName      = "/pb.ContentService/RPCRemovePostFromTag"
 )
 
 // ContentServiceClient is the client API for ContentService service.
@@ -61,6 +65,14 @@ type ContentServiceClient interface {
 	RPCGetTags(ctx context.Context, in *GetTagsRequest, opts ...grpc.CallOption) (*GetTagsResponse, error)
 	// CT000012
 	RPCUpdateTag(ctx context.Context, in *UpdateTagRequest, opts ...grpc.CallOption) (*UpdateTagResponse, error)
+	// CT000013
+	RPCAddPostToCategory(ctx context.Context, in *AddPostToCategoryRequest, opts ...grpc.CallOption) (*AddPostToCategoryResponse, error)
+	// CT000014
+	RPCRemovePostFromCategory(ctx context.Context, in *RemovePostFromCategoryRequest, opts ...grpc.CallOption) (*RemovePostFromCategoryResponse, error)
+	// CT000015
+	RPCAddPostToTag(ctx context.Context, in *AddPostToTagRequest, opts ...grpc.CallOption) (*AddPostToTagResponse, error)
+	// CT000016
+	RPCRemovePostFromTag(ctx context.Context, in *RemovePostFromTagRequest, opts ...grpc.CallOption) (*RemovePostFromTagResponse, error)
 }
 
 type contentServiceClient struct {
@@ -191,6 +203,46 @@ func (c *contentServiceClient) RPCUpdateTag(ctx context.Context, in *UpdateTagRe
 	return out, nil
 }
 
+func (c *contentServiceClient) RPCAddPostToCategory(ctx context.Context, in *AddPostToCategoryRequest, opts ...grpc.CallOption) (*AddPostToCategoryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddPostToCategoryResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCAddPostToCategory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCRemovePostFromCategory(ctx context.Context, in *RemovePostFromCategoryRequest, opts ...grpc.CallOption) (*RemovePostFromCategoryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemovePostFromCategoryResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCRemovePostFromCategory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCAddPostToTag(ctx context.Context, in *AddPostToTagRequest, opts ...grpc.CallOption) (*AddPostToTagResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddPostToTagResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCAddPostToTag_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCRemovePostFromTag(ctx context.Context, in *RemovePostFromTagRequest, opts ...grpc.CallOption) (*RemovePostFromTagResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemovePostFromTagResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCRemovePostFromTag_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ContentServiceServer is the server API for ContentService service.
 // All implementations must embed UnimplementedContentServiceServer
 // for forward compatibility.
@@ -219,6 +271,14 @@ type ContentServiceServer interface {
 	RPCGetTags(context.Context, *GetTagsRequest) (*GetTagsResponse, error)
 	// CT000012
 	RPCUpdateTag(context.Context, *UpdateTagRequest) (*UpdateTagResponse, error)
+	// CT000013
+	RPCAddPostToCategory(context.Context, *AddPostToCategoryRequest) (*AddPostToCategoryResponse, error)
+	// CT000014
+	RPCRemovePostFromCategory(context.Context, *RemovePostFromCategoryRequest) (*RemovePostFromCategoryResponse, error)
+	// CT000015
+	RPCAddPostToTag(context.Context, *AddPostToTagRequest) (*AddPostToTagResponse, error)
+	// CT000016
+	RPCRemovePostFromTag(context.Context, *RemovePostFromTagRequest) (*RemovePostFromTagResponse, error)
 	mustEmbedUnimplementedContentServiceServer()
 }
 
@@ -264,6 +324,18 @@ func (UnimplementedContentServiceServer) RPCGetTags(context.Context, *GetTagsReq
 }
 func (UnimplementedContentServiceServer) RPCUpdateTag(context.Context, *UpdateTagRequest) (*UpdateTagResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCUpdateTag not implemented")
+}
+func (UnimplementedContentServiceServer) RPCAddPostToCategory(context.Context, *AddPostToCategoryRequest) (*AddPostToCategoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCAddPostToCategory not implemented")
+}
+func (UnimplementedContentServiceServer) RPCRemovePostFromCategory(context.Context, *RemovePostFromCategoryRequest) (*RemovePostFromCategoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCRemovePostFromCategory not implemented")
+}
+func (UnimplementedContentServiceServer) RPCAddPostToTag(context.Context, *AddPostToTagRequest) (*AddPostToTagResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCAddPostToTag not implemented")
+}
+func (UnimplementedContentServiceServer) RPCRemovePostFromTag(context.Context, *RemovePostFromTagRequest) (*RemovePostFromTagResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCRemovePostFromTag not implemented")
 }
 func (UnimplementedContentServiceServer) mustEmbedUnimplementedContentServiceServer() {}
 func (UnimplementedContentServiceServer) testEmbeddedByValue()                        {}
@@ -502,6 +574,78 @@ func _ContentService_RPCUpdateTag_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ContentService_RPCAddPostToCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddPostToCategoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCAddPostToCategory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCAddPostToCategory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCAddPostToCategory(ctx, req.(*AddPostToCategoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCRemovePostFromCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemovePostFromCategoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCRemovePostFromCategory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCRemovePostFromCategory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCRemovePostFromCategory(ctx, req.(*RemovePostFromCategoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCAddPostToTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddPostToTagRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCAddPostToTag(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCAddPostToTag_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCAddPostToTag(ctx, req.(*AddPostToTagRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCRemovePostFromTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemovePostFromTagRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCRemovePostFromTag(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCRemovePostFromTag_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCRemovePostFromTag(ctx, req.(*RemovePostFromTagRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ContentService_ServiceDesc is the grpc.ServiceDesc for ContentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -556,6 +700,22 @@ var ContentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RPCUpdateTag",
 			Handler:    _ContentService_RPCUpdateTag_Handler,
+		},
+		{
+			MethodName: "RPCAddPostToCategory",
+			Handler:    _ContentService_RPCAddPostToCategory_Handler,
+		},
+		{
+			MethodName: "RPCRemovePostFromCategory",
+			Handler:    _ContentService_RPCRemovePostFromCategory_Handler,
+		},
+		{
+			MethodName: "RPCAddPostToTag",
+			Handler:    _ContentService_RPCAddPostToTag_Handler,
+		},
+		{
+			MethodName: "RPCRemovePostFromTag",
+			Handler:    _ContentService_RPCRemovePostFromTag_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

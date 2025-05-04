@@ -13,6 +13,10 @@ import "rpc_create_tag.proto";
 import "rpc_get_tag.proto";
 import "rpc_get_tags.proto";
 import "rpc_update_tag.proto";
+import "rpc_add_post_to_category.proto";
+import "rpc_add_post_to_tag.proto";
+import "rpc_remove_post_from_category.proto";
+import "rpc_remove_post_from_tag.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
@@ -41,4 +45,12 @@ service ContentService {
   rpc RPCGetTags (GetTagsRequest) returns (GetTagsResponse) {}
   //  CT000012
   rpc RPCUpdateTag (UpdateTagRequest) returns (UpdateTagResponse) {}
+  //  CT000013
+  rpc RPCAddPostToCategory (AddPostToCategoryRequest) returns (AddPostToCategoryResponse) {}
+  //  CT000014
+  rpc RPCRemovePostFromCategory (RemovePostFromCategoryRequest) returns (RemovePostFromCategoryResponse) {}
+  //  CT000015
+  rpc RPCAddPostToTag (AddPostToTagRequest) returns (AddPostToTagResponse) {}
+  //  CT000016
+  rpc RPCRemovePostFromTag (RemovePostFromTagRequest) returns (RemovePostFromTagResponse) {}
 }
