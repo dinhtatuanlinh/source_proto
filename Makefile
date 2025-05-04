@@ -6,5 +6,5 @@ proto:
 	protoc --proto_path=proto/content --go_out=pkg/contentpb --go_opt=paths=source_relative --go-grpc_out=pkg/contentpb \
 	--go-grpc_opt=paths=source_relative proto/content/*.proto
 push:
-	git push origin v1.0.8
+	git push origin v1.0.11
 .PHONY: proto push

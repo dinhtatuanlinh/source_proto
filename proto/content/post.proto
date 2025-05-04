@@ -17,6 +17,7 @@ message Post {
   string status = 8;
   repeated PostCategory categories = 9;
   repeated PostTag tags = 10;
+  google.protobuf.Timestamp created_at = 11;
 }
 
 message PostCategory {
