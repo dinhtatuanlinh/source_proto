@@ -19,6 +19,7 @@ message GetPostsRequest {
   optional string sort_direction = 9;
   optional int32 limit = 10;
   optional int32 offset = 11;
+  optional string status = 12;
 }
 
 message GetPostsResponse {
