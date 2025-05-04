@@ -12,6 +12,7 @@ message GetCategoriesRequest {
   optional string sort_direction = 3;
   optional int32 limit = 4;
   optional int32 offset = 5;
+  optional bool is_deleted = 6;
 }
 
 message GetCategoriesResponse {
