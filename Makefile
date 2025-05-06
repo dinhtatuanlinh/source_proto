@@ -9,5 +9,5 @@ proto:
 	protoc --proto_path=proto/error_detail --go_out=pkg/error_detailpb --go_opt=paths=source_relative --go-grpc_out=pkg/error_detailpb \
     --go-grpc_opt=paths=source_relative proto/error_detail/*.proto
 push:
-	git push origin v1.0.16
+	git push origin v1.0.17
 .PHONY: proto push
