@@ -8,6 +8,7 @@ import "rpc_get_operator.proto";
 import "rpc_get_operator_list.proto";
 import "rpc_update_operator.proto";
 import "rpc_resend_operator_verification.proto";
+import "rpc_check_admin_existing.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
@@ -26,4 +27,6 @@ service OperatorService {
   rpc RPCUpdateOperator (UpdateOperatorRequest) returns (UpdateOperatorResponse) {}
 //  op000007
   rpc RPCResendOperatorVerification (ResendOperatorVerificationRequest) returns (ResendOperatorVerificationResponse) {}
+//  op000008
+  rpc RPCCheckAdminExisting (CheckAdminExistingRequest) returns (CheckAdminExistingResponse) {}
 }

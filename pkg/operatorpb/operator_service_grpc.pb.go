@@ -26,6 +26,7 @@ const (
 	OperatorService_RPCGetOperatorList_FullMethodName            = "/pb.OperatorService/RPCGetOperatorList"
 	OperatorService_RPCUpdateOperator_FullMethodName             = "/pb.OperatorService/RPCUpdateOperator"
 	OperatorService_RPCResendOperatorVerification_FullMethodName = "/pb.OperatorService/RPCResendOperatorVerification"
+	OperatorService_RPCCheckAdminExisting_FullMethodName         = "/pb.OperatorService/RPCCheckAdminExisting"
 )
 
 // OperatorServiceClient is the client API for OperatorService service.
@@ -46,6 +47,8 @@ type OperatorServiceClient interface {
 	RPCUpdateOperator(ctx context.Context, in *UpdateOperatorRequest, opts ...grpc.CallOption) (*UpdateOperatorResponse, error)
 	// op000007
 	RPCResendOperatorVerification(ctx context.Context, in *ResendOperatorVerificationRequest, opts ...grpc.CallOption) (*ResendOperatorVerificationResponse, error)
+	// op000008
+	RPCCheckAdminExisting(ctx context.Context, in *CheckAdminExistingRequest, opts ...grpc.CallOption) (*CheckAdminExistingResponse, error)
 }
 
 type operatorServiceClient struct {
@@ -126,6 +129,16 @@ func (c *operatorServiceClient) RPCResendOperatorVerification(ctx context.Contex
 	return out, nil
 }
 
+func (c *operatorServiceClient) RPCCheckAdminExisting(ctx context.Context, in *CheckAdminExistingRequest, opts ...grpc.CallOption) (*CheckAdminExistingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CheckAdminExistingResponse)
+	err := c.cc.Invoke(ctx, OperatorService_RPCCheckAdminExisting_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OperatorServiceServer is the server API for OperatorService service.
 // All implementations must embed UnimplementedOperatorServiceServer
 // for forward compatibility.
@@ -144,6 +157,8 @@ type OperatorServiceServer interface {
 	RPCUpdateOperator(context.Context, *UpdateOperatorRequest) (*UpdateOperatorResponse, error)
 	// op000007
 	RPCResendOperatorVerification(context.Context, *ResendOperatorVerificationRequest) (*ResendOperatorVerificationResponse, error)
+	// op000008
+	RPCCheckAdminExisting(context.Context, *CheckAdminExistingRequest) (*CheckAdminExistingResponse, error)
 	mustEmbedUnimplementedOperatorServiceServer()
 }
 
@@ -174,6 +189,9 @@ func (UnimplementedOperatorServiceServer) RPCUpdateOperator(context.Context, *Up
 }
 func (UnimplementedOperatorServiceServer) RPCResendOperatorVerification(context.Context, *ResendOperatorVerificationRequest) (*ResendOperatorVerificationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCResendOperatorVerification not implemented")
+}
+func (UnimplementedOperatorServiceServer) RPCCheckAdminExisting(context.Context, *CheckAdminExistingRequest) (*CheckAdminExistingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCCheckAdminExisting not implemented")
 }
 func (UnimplementedOperatorServiceServer) mustEmbedUnimplementedOperatorServiceServer() {}
 func (UnimplementedOperatorServiceServer) testEmbeddedByValue()                         {}
@@ -322,6 +340,24 @@ func _OperatorService_RPCResendOperatorVerification_Handler(srv interface{}, ctx
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OperatorService_RPCCheckAdminExisting_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CheckAdminExistingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OperatorServiceServer).RPCCheckAdminExisting(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OperatorService_RPCCheckAdminExisting_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OperatorServiceServer).RPCCheckAdminExisting(ctx, req.(*CheckAdminExistingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OperatorService_ServiceDesc is the grpc.ServiceDesc for OperatorService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -356,6 +392,10 @@ var OperatorService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RPCResendOperatorVerification",
 			Handler:    _OperatorService_RPCResendOperatorVerification_Handler,
+		},
+		{
+			MethodName: "RPCCheckAdminExisting",
+			Handler:    _OperatorService_RPCCheckAdminExisting_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

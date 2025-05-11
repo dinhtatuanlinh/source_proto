@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message CheckAdminExistingRequest {
+
+}
+message CheckAdminExistingResponse {
+  bool is_existing = 1;
+}
