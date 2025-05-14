@@ -19,6 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	OperatorService_RPCHealthCheck_FullMethodName                = "/pb.OperatorService/RPCHealthCheck"
 	OperatorService_RPCCreateAdmin_FullMethodName                = "/pb.OperatorService/RPCCreateAdmin"
 	OperatorService_RPCCreateOperator_FullMethodName             = "/pb.OperatorService/RPCCreateOperator"
 	OperatorService_RPCVerifyOperator_FullMethodName             = "/pb.OperatorService/RPCVerifyOperator"
@@ -34,6 +35,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type OperatorServiceClient interface {
+	// op000000
+	RPCHealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error)
 	// op000001
 	RPCCreateAdmin(ctx context.Context, in *CreateOperatorRequest, opts ...grpc.CallOption) (*CreateOperatorResponse, error)
 	// op000002
@@ -60,6 +63,16 @@ type operatorServiceClient struct {
 
 func NewOperatorServiceClient(cc grpc.ClientConnInterface) OperatorServiceClient {
 	return &operatorServiceClient{cc}
+}
+
+func (c *operatorServiceClient) RPCHealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(HealthCheckResponse)
+	err := c.cc.Invoke(ctx, OperatorService_RPCHealthCheck_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *operatorServiceClient) RPCCreateAdmin(ctx context.Context, in *CreateOperatorRequest, opts ...grpc.CallOption) (*CreateOperatorResponse, error) {
@@ -156,6 +169,8 @@ func (c *operatorServiceClient) RPCFirstChangePassword(ctx context.Context, in *
 // All implementations must embed UnimplementedOperatorServiceServer
 // for forward compatibility.
 type OperatorServiceServer interface {
+	// op000000
+	RPCHealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error)
 	// op000001
 	RPCCreateAdmin(context.Context, *CreateOperatorRequest) (*CreateOperatorResponse, error)
 	// op000002
@@ -184,6 +199,9 @@ type OperatorServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedOperatorServiceServer struct{}
 
+func (UnimplementedOperatorServiceServer) RPCHealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCHealthCheck not implemented")
+}
 func (UnimplementedOperatorServiceServer) RPCCreateAdmin(context.Context, *CreateOperatorRequest) (*CreateOperatorResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCCreateAdmin not implemented")
 }
@@ -230,6 +248,24 @@ func RegisterOperatorServiceServer(s grpc.ServiceRegistrar, srv OperatorServiceS
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&OperatorService_ServiceDesc, srv)
+}
+
+func _OperatorService_RPCHealthCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HealthCheckRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OperatorServiceServer).RPCHealthCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OperatorService_RPCHealthCheck_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OperatorServiceServer).RPCHealthCheck(ctx, req.(*HealthCheckRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _OperatorService_RPCCreateAdmin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -401,6 +437,10 @@ var OperatorService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.OperatorService",
 	HandlerType: (*OperatorServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "RPCHealthCheck",
+			Handler:    _OperatorService_RPCHealthCheck_Handler,
+		},
 		{
 			MethodName: "RPCCreateAdmin",
 			Handler:    _OperatorService_RPCCreateAdmin_Handler,

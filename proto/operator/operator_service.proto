@@ -10,10 +10,13 @@ import "rpc_update_operator.proto";
 import "rpc_resend_operator_verification.proto";
 import "rpc_check_admin_existing.proto";
 import "rpc_first_change_password.proto";
+import "rpc_health_check.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
 service OperatorService {
+//  op000000
+  rpc RPCHealthCheck (HealthCheckRequest) returns (HealthCheckResponse) {}
   //  op000001
   rpc RPCCreateAdmin (CreateOperatorRequest) returns (CreateOperatorResponse) {}
   //  op000002
