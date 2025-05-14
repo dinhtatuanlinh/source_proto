@@ -27,6 +27,7 @@ const (
 	OperatorService_RPCUpdateOperator_FullMethodName             = "/pb.OperatorService/RPCUpdateOperator"
 	OperatorService_RPCResendOperatorVerification_FullMethodName = "/pb.OperatorService/RPCResendOperatorVerification"
 	OperatorService_RPCCheckAdminExisting_FullMethodName         = "/pb.OperatorService/RPCCheckAdminExisting"
+	OperatorService_RPCFirstChangePassword_FullMethodName        = "/pb.OperatorService/RPCFirstChangePassword"
 )
 
 // OperatorServiceClient is the client API for OperatorService service.
@@ -49,6 +50,8 @@ type OperatorServiceClient interface {
 	RPCResendOperatorVerification(ctx context.Context, in *ResendOperatorVerificationRequest, opts ...grpc.CallOption) (*ResendOperatorVerificationResponse, error)
 	// op000008
 	RPCCheckAdminExisting(ctx context.Context, in *CheckAdminExistingRequest, opts ...grpc.CallOption) (*CheckAdminExistingResponse, error)
+	// op000009
+	RPCFirstChangePassword(ctx context.Context, in *FirstChangePasswordRequest, opts ...grpc.CallOption) (*FirstChangePasswordResponse, error)
 }
 
 type operatorServiceClient struct {
@@ -139,6 +142,16 @@ func (c *operatorServiceClient) RPCCheckAdminExisting(ctx context.Context, in *C
 	return out, nil
 }
 
+func (c *operatorServiceClient) RPCFirstChangePassword(ctx context.Context, in *FirstChangePasswordRequest, opts ...grpc.CallOption) (*FirstChangePasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(FirstChangePasswordResponse)
+	err := c.cc.Invoke(ctx, OperatorService_RPCFirstChangePassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OperatorServiceServer is the server API for OperatorService service.
 // All implementations must embed UnimplementedOperatorServiceServer
 // for forward compatibility.
@@ -159,6 +172,8 @@ type OperatorServiceServer interface {
 	RPCResendOperatorVerification(context.Context, *ResendOperatorVerificationRequest) (*ResendOperatorVerificationResponse, error)
 	// op000008
 	RPCCheckAdminExisting(context.Context, *CheckAdminExistingRequest) (*CheckAdminExistingResponse, error)
+	// op000009
+	RPCFirstChangePassword(context.Context, *FirstChangePasswordRequest) (*FirstChangePasswordResponse, error)
 	mustEmbedUnimplementedOperatorServiceServer()
 }
 
@@ -192,6 +207,9 @@ func (UnimplementedOperatorServiceServer) RPCResendOperatorVerification(context.
 }
 func (UnimplementedOperatorServiceServer) RPCCheckAdminExisting(context.Context, *CheckAdminExistingRequest) (*CheckAdminExistingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCCheckAdminExisting not implemented")
+}
+func (UnimplementedOperatorServiceServer) RPCFirstChangePassword(context.Context, *FirstChangePasswordRequest) (*FirstChangePasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCFirstChangePassword not implemented")
 }
 func (UnimplementedOperatorServiceServer) mustEmbedUnimplementedOperatorServiceServer() {}
 func (UnimplementedOperatorServiceServer) testEmbeddedByValue()                         {}
@@ -358,6 +376,24 @@ func _OperatorService_RPCCheckAdminExisting_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OperatorService_RPCFirstChangePassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FirstChangePasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OperatorServiceServer).RPCFirstChangePassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OperatorService_RPCFirstChangePassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OperatorServiceServer).RPCFirstChangePassword(ctx, req.(*FirstChangePasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OperatorService_ServiceDesc is the grpc.ServiceDesc for OperatorService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -396,6 +432,10 @@ var OperatorService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RPCCheckAdminExisting",
 			Handler:    _OperatorService_RPCCheckAdminExisting_Handler,
+		},
+		{
+			MethodName: "RPCFirstChangePassword",
+			Handler:    _OperatorService_RPCFirstChangePassword_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
