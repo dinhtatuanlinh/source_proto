@@ -4,10 +4,10 @@ package pb;
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
-message HealthCheckRequest{
+message ContentHealthCheckRequest{
 
 }
 
-message HealthCheckResponse {
+message ContentHealthCheckResponse {
 
 }

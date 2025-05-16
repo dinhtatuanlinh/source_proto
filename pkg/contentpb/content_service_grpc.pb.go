@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ContentService_RPCHealthCheck_FullMethodName            = "/pb.ContentService/RPCHealthCheck"
+	ContentService_RPCContentHealthCheck_FullMethodName     = "/pb.ContentService/RPCContentHealthCheck"
 	ContentService_RPCCreatePost_FullMethodName             = "/pb.ContentService/RPCCreatePost"
 	ContentService_RPCGetPost_FullMethodName                = "/pb.ContentService/RPCGetPost"
 	ContentService_RPCGetPosts_FullMethodName               = "/pb.ContentService/RPCGetPosts"
@@ -43,7 +43,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ContentServiceClient interface {
 	// op000000
-	RPCHealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error)
+	RPCContentHealthCheck(ctx context.Context, in *ContentHealthCheckRequest, opts ...grpc.CallOption) (*ContentHealthCheckResponse, error)
 	// CT000001
 	RPCCreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*CreatePostResponse, error)
 	// CT000002
@@ -86,10 +86,10 @@ func NewContentServiceClient(cc grpc.ClientConnInterface) ContentServiceClient {
 	return &contentServiceClient{cc}
 }
 
-func (c *contentServiceClient) RPCHealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error) {
+func (c *contentServiceClient) RPCContentHealthCheck(ctx context.Context, in *ContentHealthCheckRequest, opts ...grpc.CallOption) (*ContentHealthCheckResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(HealthCheckResponse)
-	err := c.cc.Invoke(ctx, ContentService_RPCHealthCheck_FullMethodName, in, out, cOpts...)
+	out := new(ContentHealthCheckResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCContentHealthCheck_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -261,7 +261,7 @@ func (c *contentServiceClient) RPCRemovePostFromTag(ctx context.Context, in *Rem
 // for forward compatibility.
 type ContentServiceServer interface {
 	// op000000
-	RPCHealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error)
+	RPCContentHealthCheck(context.Context, *ContentHealthCheckRequest) (*ContentHealthCheckResponse, error)
 	// CT000001
 	RPCCreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error)
 	// CT000002
@@ -304,8 +304,8 @@ type ContentServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedContentServiceServer struct{}
 
-func (UnimplementedContentServiceServer) RPCHealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RPCHealthCheck not implemented")
+func (UnimplementedContentServiceServer) RPCContentHealthCheck(context.Context, *ContentHealthCheckRequest) (*ContentHealthCheckResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCContentHealthCheck not implemented")
 }
 func (UnimplementedContentServiceServer) RPCCreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCCreatePost not implemented")
@@ -376,20 +376,20 @@ func RegisterContentServiceServer(s grpc.ServiceRegistrar, srv ContentServiceSer
 	s.RegisterService(&ContentService_ServiceDesc, srv)
 }
 
-func _ContentService_RPCHealthCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HealthCheckRequest)
+func _ContentService_RPCContentHealthCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ContentHealthCheckRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ContentServiceServer).RPCHealthCheck(ctx, in)
+		return srv.(ContentServiceServer).RPCContentHealthCheck(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ContentService_RPCHealthCheck_FullMethodName,
+		FullMethod: ContentService_RPCContentHealthCheck_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContentServiceServer).RPCHealthCheck(ctx, req.(*HealthCheckRequest))
+		return srv.(ContentServiceServer).RPCContentHealthCheck(ctx, req.(*ContentHealthCheckRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -690,8 +690,8 @@ var ContentService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*ContentServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "RPCHealthCheck",
-			Handler:    _ContentService_RPCHealthCheck_Handler,
+			MethodName: "RPCContentHealthCheck",
+			Handler:    _ContentService_RPCContentHealthCheck_Handler,
 		},
 		{
 			MethodName: "RPCCreatePost",
