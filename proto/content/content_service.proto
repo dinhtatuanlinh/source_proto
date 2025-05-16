@@ -17,10 +17,13 @@ import "rpc_add_post_to_category.proto";
 import "rpc_add_post_to_tag.proto";
 import "rpc_remove_post_from_category.proto";
 import "rpc_remove_post_from_tag.proto";
+import "rpc_health_check.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
 service ContentService {
+  //  op000000
+  rpc RPCHealthCheck (HealthCheckRequest) returns (HealthCheckResponse) {}
   //  CT000001
   rpc RPCCreatePost (CreatePostRequest) returns (CreatePostResponse) {}
   //  CT000002

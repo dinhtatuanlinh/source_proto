@@ -19,6 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
+	ContentService_RPCHealthCheck_FullMethodName            = "/pb.ContentService/RPCHealthCheck"
 	ContentService_RPCCreatePost_FullMethodName             = "/pb.ContentService/RPCCreatePost"
 	ContentService_RPCGetPost_FullMethodName                = "/pb.ContentService/RPCGetPost"
 	ContentService_RPCGetPosts_FullMethodName               = "/pb.ContentService/RPCGetPosts"
@@ -41,6 +42,8 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ContentServiceClient interface {
+	// op000000
+	RPCHealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error)
 	// CT000001
 	RPCCreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*CreatePostResponse, error)
 	// CT000002
@@ -81,6 +84,16 @@ type contentServiceClient struct {
 
 func NewContentServiceClient(cc grpc.ClientConnInterface) ContentServiceClient {
 	return &contentServiceClient{cc}
+}
+
+func (c *contentServiceClient) RPCHealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(HealthCheckResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCHealthCheck_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *contentServiceClient) RPCCreatePost(ctx context.Context, in *CreatePostRequest, opts ...grpc.CallOption) (*CreatePostResponse, error) {
@@ -247,6 +260,8 @@ func (c *contentServiceClient) RPCRemovePostFromTag(ctx context.Context, in *Rem
 // All implementations must embed UnimplementedContentServiceServer
 // for forward compatibility.
 type ContentServiceServer interface {
+	// op000000
+	RPCHealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error)
 	// CT000001
 	RPCCreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error)
 	// CT000002
@@ -289,6 +304,9 @@ type ContentServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedContentServiceServer struct{}
 
+func (UnimplementedContentServiceServer) RPCHealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCHealthCheck not implemented")
+}
 func (UnimplementedContentServiceServer) RPCCreatePost(context.Context, *CreatePostRequest) (*CreatePostResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCCreatePost not implemented")
 }
@@ -356,6 +374,24 @@ func RegisterContentServiceServer(s grpc.ServiceRegistrar, srv ContentServiceSer
 		t.testEmbeddedByValue()
 	}
 	s.RegisterService(&ContentService_ServiceDesc, srv)
+}
+
+func _ContentService_RPCHealthCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HealthCheckRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCHealthCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCHealthCheck_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCHealthCheck(ctx, req.(*HealthCheckRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _ContentService_RPCCreatePost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -653,6 +689,10 @@ var ContentService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "pb.ContentService",
 	HandlerType: (*ContentServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "RPCHealthCheck",
+			Handler:    _ContentService_RPCHealthCheck_Handler,
+		},
 		{
 			MethodName: "RPCCreatePost",
 			Handler:    _ContentService_RPCCreatePost_Handler,
