@@ -18,6 +18,7 @@ import "rpc_add_post_to_tag.proto";
 import "rpc_remove_post_from_category.proto";
 import "rpc_remove_post_from_tag.proto";
 import "rpc_content_health_check.proto";
+import "rpc_upload_images.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
@@ -56,4 +57,6 @@ service ContentService {
   rpc RPCAddPostToTag (AddPostToTagRequest) returns (AddPostToTagResponse) {}
   //  CT000016
   rpc RPCRemovePostFromTag (RemovePostFromTagRequest) returns (RemovePostFromTagResponse) {}
+  //  CT000017
+  rpc RPCUploadImages (UploadImagesRequest) returns (UploadImagesResponse) {}
 }
