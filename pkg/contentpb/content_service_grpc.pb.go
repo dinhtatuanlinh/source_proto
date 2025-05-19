@@ -78,7 +78,7 @@ type ContentServiceClient interface {
 	// CT000016
 	RPCRemovePostFromTag(ctx context.Context, in *RemovePostFromTagRequest, opts ...grpc.CallOption) (*RemovePostFromTagResponse, error)
 	// CT000017
-	RPCUploadImage(ctx context.Context, in *UploadImageQuest, opts ...grpc.CallOption) (*UploadImageResponse, error)
+	RPCUploadImage(ctx context.Context, in *UploadImageRequest, opts ...grpc.CallOption) (*UploadImageResponse, error)
 }
 
 type contentServiceClient struct {
@@ -259,7 +259,7 @@ func (c *contentServiceClient) RPCRemovePostFromTag(ctx context.Context, in *Rem
 	return out, nil
 }
 
-func (c *contentServiceClient) RPCUploadImage(ctx context.Context, in *UploadImageQuest, opts ...grpc.CallOption) (*UploadImageResponse, error) {
+func (c *contentServiceClient) RPCUploadImage(ctx context.Context, in *UploadImageRequest, opts ...grpc.CallOption) (*UploadImageResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UploadImageResponse)
 	err := c.cc.Invoke(ctx, ContentService_RPCUploadImage_FullMethodName, in, out, cOpts...)
@@ -308,7 +308,7 @@ type ContentServiceServer interface {
 	// CT000016
 	RPCRemovePostFromTag(context.Context, *RemovePostFromTagRequest) (*RemovePostFromTagResponse, error)
 	// CT000017
-	RPCUploadImage(context.Context, *UploadImageQuest) (*UploadImageResponse, error)
+	RPCUploadImage(context.Context, *UploadImageRequest) (*UploadImageResponse, error)
 	mustEmbedUnimplementedContentServiceServer()
 }
 
@@ -370,7 +370,7 @@ func (UnimplementedContentServiceServer) RPCAddPostToTag(context.Context, *AddPo
 func (UnimplementedContentServiceServer) RPCRemovePostFromTag(context.Context, *RemovePostFromTagRequest) (*RemovePostFromTagResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCRemovePostFromTag not implemented")
 }
-func (UnimplementedContentServiceServer) RPCUploadImage(context.Context, *UploadImageQuest) (*UploadImageResponse, error) {
+func (UnimplementedContentServiceServer) RPCUploadImage(context.Context, *UploadImageRequest) (*UploadImageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCUploadImage not implemented")
 }
 func (UnimplementedContentServiceServer) mustEmbedUnimplementedContentServiceServer() {}
@@ -701,7 +701,7 @@ func _ContentService_RPCRemovePostFromTag_Handler(srv interface{}, ctx context.C
 }
 
 func _ContentService_RPCUploadImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UploadImageQuest)
+	in := new(UploadImageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -713,7 +713,7 @@ func _ContentService_RPCUploadImage_Handler(srv interface{}, ctx context.Context
 		FullMethod: ContentService_RPCUploadImage_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ContentServiceServer).RPCUploadImage(ctx, req.(*UploadImageQuest))
+		return srv.(ContentServiceServer).RPCUploadImage(ctx, req.(*UploadImageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
