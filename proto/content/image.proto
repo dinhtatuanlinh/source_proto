@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pb;
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message Image {
+  int64 image_id = 1;
+  string type = 2;
+  string name = 3;
+  string link = 4;
+  google.protobuf.Timestamp created_at = 5;
+}

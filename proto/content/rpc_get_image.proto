@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package pb;
+
+import "image.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message GetImageRequest {
+  int64 image_id = 1;
+}
+
+message GetImageResponse {
+  Image image = 1;
+}

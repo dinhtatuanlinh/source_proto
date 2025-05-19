@@ -19,6 +19,8 @@ import "rpc_remove_post_from_category.proto";
 import "rpc_remove_post_from_tag.proto";
 import "rpc_content_health_check.proto";
 import "rpc_upload_images.proto";
+import "rpc_get_image.proto";
+import "rpc_get_images.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
@@ -58,5 +60,9 @@ service ContentService {
   //  CT000016
   rpc RPCRemovePostFromTag (RemovePostFromTagRequest) returns (RemovePostFromTagResponse) {}
   //  CT000017
-rpc RPCUploadImage (UploadImageRequest) returns (UploadImageResponse) {}
+  rpc RPCUploadImage (UploadImageRequest) returns (UploadImageResponse) {}
+  // CT000018
+  rpc RPCGetImage (GetImageRequest) returns (GetImageResponse) {}
+  // CT000019
+  rpc RPCGetImages (GetImagesRequest) returns (GetImagesResponse) {}
 }
