@@ -12,4 +12,5 @@ message UploadImageRequest {
 }
 
 message UploadImageResponse {
+  string link = 1;
 }
