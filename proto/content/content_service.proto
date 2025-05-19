@@ -58,5 +58,5 @@ service ContentService {
   //  CT000016
   rpc RPCRemovePostFromTag (RemovePostFromTagRequest) returns (RemovePostFromTagResponse) {}
   //  CT000017
-  rpc RPCUploadImages (UploadImagesRequest) returns (UploadImagesResponse) {}
+rpc RPCUploadImage (UploadImageQuest) returns (UploadImageResponse) {}
 }

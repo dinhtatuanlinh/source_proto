@@ -5,11 +5,11 @@ package pb;
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
-message UploadImagesRequest {
+message UploadImageQuest {
   string link = 1;
   string name = 2;
   string type = 3;
 }
 
-message UploadImagesResponse {
+message UploadImageResponse {
 }
