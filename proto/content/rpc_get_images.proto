@@ -15,4 +15,5 @@ message GetImagesRequest {
 
 message GetImagesResponse {
   repeated Image images = 1;
+  int32 total_case = 2;
 }
