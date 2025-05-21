@@ -56,7 +56,10 @@ var file_content_service_proto_rawDesc = string([]byte{
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x13, 0x72, 0x70, 0x63, 0x5f, 0x67, 0x65, 0x74, 0x5f,
 	0x69, 0x6d, 0x61, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x14, 0x72, 0x70, 0x63,
 	0x5f, 0x67, 0x65, 0x74, 0x5f, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x32, 0x98, 0x0b, 0x0a, 0x0e, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72,
+	0x6f, 0x1a, 0x16, 0x72, 0x70, 0x63, 0x5f, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x5f, 0x69, 0x6d,
+	0x61, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x16, 0x72, 0x70, 0x63, 0x5f, 0x75,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x5f, 0x69, 0x6d, 0x61, 0x67, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x32, 0xa2, 0x0c, 0x0a, 0x0e, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x53, 0x65, 0x72,
 	0x76, 0x69, 0x63, 0x65, 0x12, 0x58, 0x0a, 0x15, 0x52, 0x50, 0x43, 0x43, 0x6f, 0x6e, 0x74, 0x65,
 	0x6e, 0x74, 0x48, 0x65, 0x61, 0x6c, 0x74, 0x68, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x12, 0x1d, 0x2e,
 	0x70, 0x62, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x48, 0x65, 0x61, 0x6c, 0x74, 0x68,
@@ -145,10 +148,19 @@ var file_content_service_proto_rawDesc = string([]byte{
 	0x0c, 0x52, 0x50, 0x43, 0x47, 0x65, 0x74, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x12, 0x14, 0x2e,
 	0x70, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x70, 0x62, 0x2e, 0x47, 0x65, 0x74, 0x49, 0x6d, 0x61, 0x67,
-	0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x28, 0x5a, 0x26,
-	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x69, 0x6e, 0x68, 0x74,
-	0x61, 0x74, 0x75, 0x61, 0x6e, 0x6c, 0x69, 0x6e, 0x68, 0x2f, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65,
-	0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x43, 0x0a, 0x0e,
+	0x52, 0x50, 0x43, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x12, 0x16,
+	0x2e, 0x70, 0x62, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x70, 0x62, 0x2e, 0x44, 0x65, 0x6c, 0x65,
+	0x74, 0x65, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x00, 0x12, 0x43, 0x0a, 0x0e, 0x52, 0x50, 0x43, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x6d,
+	0x61, 0x67, 0x65, 0x12, 0x16, 0x2e, 0x70, 0x62, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49,
+	0x6d, 0x61, 0x67, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x70, 0x62,
+	0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x49, 0x6d, 0x61, 0x67, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x28, 0x5a, 0x26, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62,
+	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x69, 0x6e, 0x68, 0x74, 0x61, 0x74, 0x75, 0x61, 0x6e, 0x6c,
+	0x69, 0x6e, 0x68, 0x2f, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 })
 
 var file_content_service_proto_goTypes = []any{
@@ -172,26 +184,30 @@ var file_content_service_proto_goTypes = []any{
 	(*UploadImageRequest)(nil),             // 17: pb.UploadImageRequest
 	(*GetImageRequest)(nil),                // 18: pb.GetImageRequest
 	(*GetImagesRequest)(nil),               // 19: pb.GetImagesRequest
-	(*ContentHealthCheckResponse)(nil),     // 20: pb.ContentHealthCheckResponse
-	(*CreatePostResponse)(nil),             // 21: pb.CreatePostResponse
-	(*GetPostResponse)(nil),                // 22: pb.GetPostResponse
-	(*GetPostsResponse)(nil),               // 23: pb.GetPostsResponse
-	(*UpdatePostResponse)(nil),             // 24: pb.UpdatePostResponse
-	(*CreateCategoryResponse)(nil),         // 25: pb.CreateCategoryResponse
-	(*GetCategoryResponse)(nil),            // 26: pb.GetCategoryResponse
-	(*GetCategoriesResponse)(nil),          // 27: pb.GetCategoriesResponse
-	(*UpdateCategoryResponse)(nil),         // 28: pb.UpdateCategoryResponse
-	(*CreateTagResponse)(nil),              // 29: pb.CreateTagResponse
-	(*GetTagResponse)(nil),                 // 30: pb.GetTagResponse
-	(*GetTagsResponse)(nil),                // 31: pb.GetTagsResponse
-	(*UpdateTagResponse)(nil),              // 32: pb.UpdateTagResponse
-	(*AddPostToCategoryResponse)(nil),      // 33: pb.AddPostToCategoryResponse
-	(*RemovePostFromCategoryResponse)(nil), // 34: pb.RemovePostFromCategoryResponse
-	(*AddPostToTagResponse)(nil),           // 35: pb.AddPostToTagResponse
-	(*RemovePostFromTagResponse)(nil),      // 36: pb.RemovePostFromTagResponse
-	(*UploadImageResponse)(nil),            // 37: pb.UploadImageResponse
-	(*GetImageResponse)(nil),               // 38: pb.GetImageResponse
-	(*GetImagesResponse)(nil),              // 39: pb.GetImagesResponse
+	(*DeleteImageRequest)(nil),             // 20: pb.DeleteImageRequest
+	(*UpdateImageRequest)(nil),             // 21: pb.UpdateImageRequest
+	(*ContentHealthCheckResponse)(nil),     // 22: pb.ContentHealthCheckResponse
+	(*CreatePostResponse)(nil),             // 23: pb.CreatePostResponse
+	(*GetPostResponse)(nil),                // 24: pb.GetPostResponse
+	(*GetPostsResponse)(nil),               // 25: pb.GetPostsResponse
+	(*UpdatePostResponse)(nil),             // 26: pb.UpdatePostResponse
+	(*CreateCategoryResponse)(nil),         // 27: pb.CreateCategoryResponse
+	(*GetCategoryResponse)(nil),            // 28: pb.GetCategoryResponse
+	(*GetCategoriesResponse)(nil),          // 29: pb.GetCategoriesResponse
+	(*UpdateCategoryResponse)(nil),         // 30: pb.UpdateCategoryResponse
+	(*CreateTagResponse)(nil),              // 31: pb.CreateTagResponse
+	(*GetTagResponse)(nil),                 // 32: pb.GetTagResponse
+	(*GetTagsResponse)(nil),                // 33: pb.GetTagsResponse
+	(*UpdateTagResponse)(nil),              // 34: pb.UpdateTagResponse
+	(*AddPostToCategoryResponse)(nil),      // 35: pb.AddPostToCategoryResponse
+	(*RemovePostFromCategoryResponse)(nil), // 36: pb.RemovePostFromCategoryResponse
+	(*AddPostToTagResponse)(nil),           // 37: pb.AddPostToTagResponse
+	(*RemovePostFromTagResponse)(nil),      // 38: pb.RemovePostFromTagResponse
+	(*UploadImageResponse)(nil),            // 39: pb.UploadImageResponse
+	(*GetImageResponse)(nil),               // 40: pb.GetImageResponse
+	(*GetImagesResponse)(nil),              // 41: pb.GetImagesResponse
+	(*DeleteImageResponse)(nil),            // 42: pb.DeleteImageResponse
+	(*UpdateImageResponse)(nil),            // 43: pb.UpdateImageResponse
 }
 var file_content_service_proto_depIdxs = []int32{
 	0,  // 0: pb.ContentService.RPCContentHealthCheck:input_type -> pb.ContentHealthCheckRequest
@@ -214,28 +230,32 @@ var file_content_service_proto_depIdxs = []int32{
 	17, // 17: pb.ContentService.RPCUploadImage:input_type -> pb.UploadImageRequest
 	18, // 18: pb.ContentService.RPCGetImage:input_type -> pb.GetImageRequest
 	19, // 19: pb.ContentService.RPCGetImages:input_type -> pb.GetImagesRequest
-	20, // 20: pb.ContentService.RPCContentHealthCheck:output_type -> pb.ContentHealthCheckResponse
-	21, // 21: pb.ContentService.RPCCreatePost:output_type -> pb.CreatePostResponse
-	22, // 22: pb.ContentService.RPCGetPost:output_type -> pb.GetPostResponse
-	23, // 23: pb.ContentService.RPCGetPosts:output_type -> pb.GetPostsResponse
-	24, // 24: pb.ContentService.RPCUpdatePost:output_type -> pb.UpdatePostResponse
-	25, // 25: pb.ContentService.RPCCreateCategory:output_type -> pb.CreateCategoryResponse
-	26, // 26: pb.ContentService.RPCGetCategory:output_type -> pb.GetCategoryResponse
-	27, // 27: pb.ContentService.RPCGetCategories:output_type -> pb.GetCategoriesResponse
-	28, // 28: pb.ContentService.RPCUpdateCategory:output_type -> pb.UpdateCategoryResponse
-	29, // 29: pb.ContentService.RPCCreateTag:output_type -> pb.CreateTagResponse
-	30, // 30: pb.ContentService.RPCGetTag:output_type -> pb.GetTagResponse
-	31, // 31: pb.ContentService.RPCGetTags:output_type -> pb.GetTagsResponse
-	32, // 32: pb.ContentService.RPCUpdateTag:output_type -> pb.UpdateTagResponse
-	33, // 33: pb.ContentService.RPCAddPostToCategory:output_type -> pb.AddPostToCategoryResponse
-	34, // 34: pb.ContentService.RPCRemovePostFromCategory:output_type -> pb.RemovePostFromCategoryResponse
-	35, // 35: pb.ContentService.RPCAddPostToTag:output_type -> pb.AddPostToTagResponse
-	36, // 36: pb.ContentService.RPCRemovePostFromTag:output_type -> pb.RemovePostFromTagResponse
-	37, // 37: pb.ContentService.RPCUploadImage:output_type -> pb.UploadImageResponse
-	38, // 38: pb.ContentService.RPCGetImage:output_type -> pb.GetImageResponse
-	39, // 39: pb.ContentService.RPCGetImages:output_type -> pb.GetImagesResponse
-	20, // [20:40] is the sub-list for method output_type
-	0,  // [0:20] is the sub-list for method input_type
+	20, // 20: pb.ContentService.RPCDeleteImage:input_type -> pb.DeleteImageRequest
+	21, // 21: pb.ContentService.RPCUpdateImage:input_type -> pb.UpdateImageRequest
+	22, // 22: pb.ContentService.RPCContentHealthCheck:output_type -> pb.ContentHealthCheckResponse
+	23, // 23: pb.ContentService.RPCCreatePost:output_type -> pb.CreatePostResponse
+	24, // 24: pb.ContentService.RPCGetPost:output_type -> pb.GetPostResponse
+	25, // 25: pb.ContentService.RPCGetPosts:output_type -> pb.GetPostsResponse
+	26, // 26: pb.ContentService.RPCUpdatePost:output_type -> pb.UpdatePostResponse
+	27, // 27: pb.ContentService.RPCCreateCategory:output_type -> pb.CreateCategoryResponse
+	28, // 28: pb.ContentService.RPCGetCategory:output_type -> pb.GetCategoryResponse
+	29, // 29: pb.ContentService.RPCGetCategories:output_type -> pb.GetCategoriesResponse
+	30, // 30: pb.ContentService.RPCUpdateCategory:output_type -> pb.UpdateCategoryResponse
+	31, // 31: pb.ContentService.RPCCreateTag:output_type -> pb.CreateTagResponse
+	32, // 32: pb.ContentService.RPCGetTag:output_type -> pb.GetTagResponse
+	33, // 33: pb.ContentService.RPCGetTags:output_type -> pb.GetTagsResponse
+	34, // 34: pb.ContentService.RPCUpdateTag:output_type -> pb.UpdateTagResponse
+	35, // 35: pb.ContentService.RPCAddPostToCategory:output_type -> pb.AddPostToCategoryResponse
+	36, // 36: pb.ContentService.RPCRemovePostFromCategory:output_type -> pb.RemovePostFromCategoryResponse
+	37, // 37: pb.ContentService.RPCAddPostToTag:output_type -> pb.AddPostToTagResponse
+	38, // 38: pb.ContentService.RPCRemovePostFromTag:output_type -> pb.RemovePostFromTagResponse
+	39, // 39: pb.ContentService.RPCUploadImage:output_type -> pb.UploadImageResponse
+	40, // 40: pb.ContentService.RPCGetImage:output_type -> pb.GetImageResponse
+	41, // 41: pb.ContentService.RPCGetImages:output_type -> pb.GetImagesResponse
+	42, // 42: pb.ContentService.RPCDeleteImage:output_type -> pb.DeleteImageResponse
+	43, // 43: pb.ContentService.RPCUpdateImage:output_type -> pb.UpdateImageResponse
+	22, // [22:44] is the sub-list for method output_type
+	0,  // [0:22] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -266,6 +286,8 @@ func file_content_service_proto_init() {
 	file_rpc_upload_images_proto_init()
 	file_rpc_get_image_proto_init()
 	file_rpc_get_images_proto_init()
+	file_rpc_delete_image_proto_init()
+	file_rpc_update_image_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

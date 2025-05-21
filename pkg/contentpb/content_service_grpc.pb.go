@@ -39,6 +39,8 @@ const (
 	ContentService_RPCUploadImage_FullMethodName            = "/pb.ContentService/RPCUploadImage"
 	ContentService_RPCGetImage_FullMethodName               = "/pb.ContentService/RPCGetImage"
 	ContentService_RPCGetImages_FullMethodName              = "/pb.ContentService/RPCGetImages"
+	ContentService_RPCDeleteImage_FullMethodName            = "/pb.ContentService/RPCDeleteImage"
+	ContentService_RPCUpdateImage_FullMethodName            = "/pb.ContentService/RPCUpdateImage"
 )
 
 // ContentServiceClient is the client API for ContentService service.
@@ -85,6 +87,10 @@ type ContentServiceClient interface {
 	RPCGetImage(ctx context.Context, in *GetImageRequest, opts ...grpc.CallOption) (*GetImageResponse, error)
 	// CT000019
 	RPCGetImages(ctx context.Context, in *GetImagesRequest, opts ...grpc.CallOption) (*GetImagesResponse, error)
+	// CT000020
+	RPCDeleteImage(ctx context.Context, in *DeleteImageRequest, opts ...grpc.CallOption) (*DeleteImageResponse, error)
+	// CT000021
+	RPCUpdateImage(ctx context.Context, in *UpdateImageRequest, opts ...grpc.CallOption) (*UpdateImageResponse, error)
 }
 
 type contentServiceClient struct {
@@ -295,6 +301,26 @@ func (c *contentServiceClient) RPCGetImages(ctx context.Context, in *GetImagesRe
 	return out, nil
 }
 
+func (c *contentServiceClient) RPCDeleteImage(ctx context.Context, in *DeleteImageRequest, opts ...grpc.CallOption) (*DeleteImageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteImageResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCDeleteImage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCUpdateImage(ctx context.Context, in *UpdateImageRequest, opts ...grpc.CallOption) (*UpdateImageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateImageResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCUpdateImage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ContentServiceServer is the server API for ContentService service.
 // All implementations must embed UnimplementedContentServiceServer
 // for forward compatibility.
@@ -339,6 +365,10 @@ type ContentServiceServer interface {
 	RPCGetImage(context.Context, *GetImageRequest) (*GetImageResponse, error)
 	// CT000019
 	RPCGetImages(context.Context, *GetImagesRequest) (*GetImagesResponse, error)
+	// CT000020
+	RPCDeleteImage(context.Context, *DeleteImageRequest) (*DeleteImageResponse, error)
+	// CT000021
+	RPCUpdateImage(context.Context, *UpdateImageRequest) (*UpdateImageResponse, error)
 	mustEmbedUnimplementedContentServiceServer()
 }
 
@@ -408,6 +438,12 @@ func (UnimplementedContentServiceServer) RPCGetImage(context.Context, *GetImageR
 }
 func (UnimplementedContentServiceServer) RPCGetImages(context.Context, *GetImagesRequest) (*GetImagesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCGetImages not implemented")
+}
+func (UnimplementedContentServiceServer) RPCDeleteImage(context.Context, *DeleteImageRequest) (*DeleteImageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCDeleteImage not implemented")
+}
+func (UnimplementedContentServiceServer) RPCUpdateImage(context.Context, *UpdateImageRequest) (*UpdateImageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCUpdateImage not implemented")
 }
 func (UnimplementedContentServiceServer) mustEmbedUnimplementedContentServiceServer() {}
 func (UnimplementedContentServiceServer) testEmbeddedByValue()                        {}
@@ -790,6 +826,42 @@ func _ContentService_RPCGetImages_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ContentService_RPCDeleteImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteImageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCDeleteImage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCDeleteImage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCDeleteImage(ctx, req.(*DeleteImageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCUpdateImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateImageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCUpdateImage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCUpdateImage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCUpdateImage(ctx, req.(*UpdateImageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ContentService_ServiceDesc is the grpc.ServiceDesc for ContentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -876,6 +948,14 @@ var ContentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RPCGetImages",
 			Handler:    _ContentService_RPCGetImages_Handler,
+		},
+		{
+			MethodName: "RPCDeleteImage",
+			Handler:    _ContentService_RPCDeleteImage_Handler,
+		},
+		{
+			MethodName: "RPCUpdateImage",
+			Handler:    _ContentService_RPCUpdateImage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

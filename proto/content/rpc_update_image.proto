@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message UpdateImageRequest {
+  int64 image_id = 1;
+  string name = 2;
+}
+
+message UpdateImageResponse {
+
+}

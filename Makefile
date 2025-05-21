@@ -9,7 +9,7 @@ proto:
 	protoc --proto_path=proto/error_detail --go_out=pkg/error_detailpb --go_opt=paths=source_relative --go-grpc_out=pkg/error_detailpb \
     --go-grpc_opt=paths=source_relative proto/error_detail/*.proto
 push:
-	git push origin v1.0.35
+	git push origin v1.0.36
 mergetomaster:
-	git merge v1.0.35
+	git merge v1.0.36
 .PHONY: proto push mergetomaster

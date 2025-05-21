@@ -21,6 +21,8 @@ import "rpc_content_health_check.proto";
 import "rpc_upload_images.proto";
 import "rpc_get_image.proto";
 import "rpc_get_images.proto";
+import "rpc_delete_image.proto";
+import "rpc_update_image.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
@@ -65,4 +67,8 @@ service ContentService {
   rpc RPCGetImage (GetImageRequest) returns (GetImageResponse) {}
   // CT000019
   rpc RPCGetImages (GetImagesRequest) returns (GetImagesResponse) {}
+  // CT000020
+  rpc RPCDeleteImage (DeleteImageRequest) returns (DeleteImageResponse) {}
+  // CT000021
+  rpc RPCUpdateImage (UpdateImageRequest) returns (UpdateImageResponse) {}
 }
