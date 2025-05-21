@@ -17,4 +17,5 @@ message CreatePostRequest {
 }
 
 message CreatePostResponse {
+  int64 post_id = 1;
 }
