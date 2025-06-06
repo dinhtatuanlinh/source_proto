@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message DeleteFileRequest {
+  int64 file_id = 1;
+}
+
+message DeleteFileResponse {
+}

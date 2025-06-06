@@ -41,6 +41,11 @@ const (
 	ContentService_RPCGetImages_FullMethodName              = "/pb.ContentService/RPCGetImages"
 	ContentService_RPCDeleteImage_FullMethodName            = "/pb.ContentService/RPCDeleteImage"
 	ContentService_RPCUpdateImage_FullMethodName            = "/pb.ContentService/RPCUpdateImage"
+	ContentService_RPCUploadFile_FullMethodName             = "/pb.ContentService/RPCUploadFile"
+	ContentService_RPCGetFile_FullMethodName                = "/pb.ContentService/RPCGetFile"
+	ContentService_RPCGetFiles_FullMethodName               = "/pb.ContentService/RPCGetFiles"
+	ContentService_RPCDeleteFile_FullMethodName             = "/pb.ContentService/RPCDeleteFile"
+	ContentService_RPCUpdateFile_FullMethodName             = "/pb.ContentService/RPCUpdateFile"
 )
 
 // ContentServiceClient is the client API for ContentService service.
@@ -91,6 +96,16 @@ type ContentServiceClient interface {
 	RPCDeleteImage(ctx context.Context, in *DeleteImageRequest, opts ...grpc.CallOption) (*DeleteImageResponse, error)
 	// CT000021
 	RPCUpdateImage(ctx context.Context, in *UpdateImageRequest, opts ...grpc.CallOption) (*UpdateImageResponse, error)
+	// CT000022
+	RPCUploadFile(ctx context.Context, in *UploadFileRequest, opts ...grpc.CallOption) (*UploadFileResponse, error)
+	// CT000023
+	RPCGetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*GetFileResponse, error)
+	// CT000024
+	RPCGetFiles(ctx context.Context, in *GetFilesRequest, opts ...grpc.CallOption) (*GetFilesResponse, error)
+	// CT000025
+	RPCDeleteFile(ctx context.Context, in *DeleteFileRequest, opts ...grpc.CallOption) (*DeleteFileResponse, error)
+	// CT000026
+	RPCUpdateFile(ctx context.Context, in *UpdateFileRequest, opts ...grpc.CallOption) (*UpdateFileResponse, error)
 }
 
 type contentServiceClient struct {
@@ -321,6 +336,56 @@ func (c *contentServiceClient) RPCUpdateImage(ctx context.Context, in *UpdateIma
 	return out, nil
 }
 
+func (c *contentServiceClient) RPCUploadFile(ctx context.Context, in *UploadFileRequest, opts ...grpc.CallOption) (*UploadFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UploadFileResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCUploadFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCGetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*GetFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetFileResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCGetFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCGetFiles(ctx context.Context, in *GetFilesRequest, opts ...grpc.CallOption) (*GetFilesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetFilesResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCGetFiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCDeleteFile(ctx context.Context, in *DeleteFileRequest, opts ...grpc.CallOption) (*DeleteFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteFileResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCDeleteFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCUpdateFile(ctx context.Context, in *UpdateFileRequest, opts ...grpc.CallOption) (*UpdateFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateFileResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCUpdateFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ContentServiceServer is the server API for ContentService service.
 // All implementations must embed UnimplementedContentServiceServer
 // for forward compatibility.
@@ -369,6 +434,16 @@ type ContentServiceServer interface {
 	RPCDeleteImage(context.Context, *DeleteImageRequest) (*DeleteImageResponse, error)
 	// CT000021
 	RPCUpdateImage(context.Context, *UpdateImageRequest) (*UpdateImageResponse, error)
+	// CT000022
+	RPCUploadFile(context.Context, *UploadFileRequest) (*UploadFileResponse, error)
+	// CT000023
+	RPCGetFile(context.Context, *GetFileRequest) (*GetFileResponse, error)
+	// CT000024
+	RPCGetFiles(context.Context, *GetFilesRequest) (*GetFilesResponse, error)
+	// CT000025
+	RPCDeleteFile(context.Context, *DeleteFileRequest) (*DeleteFileResponse, error)
+	// CT000026
+	RPCUpdateFile(context.Context, *UpdateFileRequest) (*UpdateFileResponse, error)
 	mustEmbedUnimplementedContentServiceServer()
 }
 
@@ -444,6 +519,21 @@ func (UnimplementedContentServiceServer) RPCDeleteImage(context.Context, *Delete
 }
 func (UnimplementedContentServiceServer) RPCUpdateImage(context.Context, *UpdateImageRequest) (*UpdateImageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCUpdateImage not implemented")
+}
+func (UnimplementedContentServiceServer) RPCUploadFile(context.Context, *UploadFileRequest) (*UploadFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCUploadFile not implemented")
+}
+func (UnimplementedContentServiceServer) RPCGetFile(context.Context, *GetFileRequest) (*GetFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCGetFile not implemented")
+}
+func (UnimplementedContentServiceServer) RPCGetFiles(context.Context, *GetFilesRequest) (*GetFilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCGetFiles not implemented")
+}
+func (UnimplementedContentServiceServer) RPCDeleteFile(context.Context, *DeleteFileRequest) (*DeleteFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCDeleteFile not implemented")
+}
+func (UnimplementedContentServiceServer) RPCUpdateFile(context.Context, *UpdateFileRequest) (*UpdateFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCUpdateFile not implemented")
 }
 func (UnimplementedContentServiceServer) mustEmbedUnimplementedContentServiceServer() {}
 func (UnimplementedContentServiceServer) testEmbeddedByValue()                        {}
@@ -862,6 +952,96 @@ func _ContentService_RPCUpdateImage_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ContentService_RPCUploadFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UploadFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCUploadFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCUploadFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCUploadFile(ctx, req.(*UploadFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCGetFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCGetFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCGetFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCGetFile(ctx, req.(*GetFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCGetFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetFilesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCGetFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCGetFiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCGetFiles(ctx, req.(*GetFilesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCDeleteFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCDeleteFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCDeleteFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCDeleteFile(ctx, req.(*DeleteFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCUpdateFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCUpdateFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCUpdateFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCUpdateFile(ctx, req.(*UpdateFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ContentService_ServiceDesc is the grpc.ServiceDesc for ContentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -956,6 +1136,26 @@ var ContentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RPCUpdateImage",
 			Handler:    _ContentService_RPCUpdateImage_Handler,
+		},
+		{
+			MethodName: "RPCUploadFile",
+			Handler:    _ContentService_RPCUploadFile_Handler,
+		},
+		{
+			MethodName: "RPCGetFile",
+			Handler:    _ContentService_RPCGetFile_Handler,
+		},
+		{
+			MethodName: "RPCGetFiles",
+			Handler:    _ContentService_RPCGetFiles_Handler,
+		},
+		{
+			MethodName: "RPCDeleteFile",
+			Handler:    _ContentService_RPCDeleteFile_Handler,
+		},
+		{
+			MethodName: "RPCUpdateFile",
+			Handler:    _ContentService_RPCUpdateFile_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package pb;
+
+import "file.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message GetFilesRequest {
+  optional string name = 1;
+  optional int32 limit = 2;
+  optional int32 offset = 3;
+}
+
+message GetFilesResponse {
+  repeated File files = 1;
+  int32 total_case = 2;
+}

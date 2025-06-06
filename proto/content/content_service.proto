@@ -23,6 +23,11 @@ import "rpc_get_image.proto";
 import "rpc_get_images.proto";
 import "rpc_delete_image.proto";
 import "rpc_update_image.proto";
+import "rpc_delete_file.proto";
+import "rpc_get_file.proto";
+import "rpc_get_files.proto";
+import "rpc_update_file.proto";
+import "rpc_upload_file.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
@@ -71,4 +76,14 @@ service ContentService {
   rpc RPCDeleteImage (DeleteImageRequest) returns (DeleteImageResponse) {}
   // CT000021
   rpc RPCUpdateImage (UpdateImageRequest) returns (UpdateImageResponse) {}
+//  CT000022
+  rpc RPCUploadFile (UploadFileRequest) returns (UploadFileResponse) {}
+//  CT000023
+  rpc RPCGetFile (GetFileRequest) returns (GetFileResponse) {}
+//  CT000024
+  rpc RPCGetFiles (GetFilesRequest) returns (GetFilesResponse) {}
+//  CT000025
+  rpc RPCDeleteFile (DeleteFileRequest) returns (DeleteFileResponse) {}
+//  CT000026
+  rpc RPCUpdateFile (UpdateFileRequest) returns (UpdateFileResponse) {}
 }

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package pb;
+
+import "file.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message GetFileRequest {
+  int64 file_id = 1;
+}
+
+message GetFileResponse {
+  File file = 1;
+}

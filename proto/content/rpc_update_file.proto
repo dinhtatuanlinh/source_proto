@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message UpdateFileRequest {
+  int64 file_id = 1;
+  optional string name = 2;
+}
+
+message UpdateFileResponse {
+
+}

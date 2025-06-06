@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package pb;
+
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message UploadFileRequest {
+  string link = 1;
+  string name = 2;
+}
+
+message UploadFileResponse {
+  string link = 1;
+}
