@@ -10,5 +10,5 @@ message GetBannersRequest {
 }
 
 message GetBannersResponse {
-  repeated Banner banner = 1;
+  repeated Banner banners = 1;
 }
