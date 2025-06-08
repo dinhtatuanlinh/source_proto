@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package pb;
+
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message AddBannerRequest {
+  string position = 1;
+  string link = 2;
+  int32 priority = 3;
+}
+
+message AddBannerResponse {
+}

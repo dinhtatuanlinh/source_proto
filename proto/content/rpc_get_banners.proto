@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pb;
+import "banner.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message GetBannersRequest {
+  string position = 1;
+}
+
+message GetBannersResponse {
+  repeated Banner banner = 1;
+}

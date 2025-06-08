@@ -46,6 +46,10 @@ const (
 	ContentService_RPCGetFiles_FullMethodName               = "/pb.ContentService/RPCGetFiles"
 	ContentService_RPCDeleteFile_FullMethodName             = "/pb.ContentService/RPCDeleteFile"
 	ContentService_RPCUpdateFile_FullMethodName             = "/pb.ContentService/RPCUpdateFile"
+	ContentService_RPCAddBanner_FullMethodName              = "/pb.ContentService/RPCAddBanner"
+	ContentService_RPCGetBanners_FullMethodName             = "/pb.ContentService/RPCGetBanners"
+	ContentService_RPCUpdateBanner_FullMethodName           = "/pb.ContentService/RPCUpdateBanner"
+	ContentService_RPCDeleteBanner_FullMethodName           = "/pb.ContentService/RPCDeleteBanner"
 )
 
 // ContentServiceClient is the client API for ContentService service.
@@ -106,6 +110,14 @@ type ContentServiceClient interface {
 	RPCDeleteFile(ctx context.Context, in *DeleteFileRequest, opts ...grpc.CallOption) (*DeleteFileResponse, error)
 	// CT000026
 	RPCUpdateFile(ctx context.Context, in *UpdateFileRequest, opts ...grpc.CallOption) (*UpdateFileResponse, error)
+	// CT000027
+	RPCAddBanner(ctx context.Context, in *AddBannerRequest, opts ...grpc.CallOption) (*AddBannerResponse, error)
+	// CT0000028
+	RPCGetBanners(ctx context.Context, in *GetBannersRequest, opts ...grpc.CallOption) (*GetBannersResponse, error)
+	// CT000029
+	RPCUpdateBanner(ctx context.Context, in *UpdateBannerRequest, opts ...grpc.CallOption) (*UpdateBannerResponse, error)
+	// CT000030
+	RPCDeleteBanner(ctx context.Context, in *DeleteBannerRequest, opts ...grpc.CallOption) (*DeleteBannerResponse, error)
 }
 
 type contentServiceClient struct {
@@ -386,6 +398,46 @@ func (c *contentServiceClient) RPCUpdateFile(ctx context.Context, in *UpdateFile
 	return out, nil
 }
 
+func (c *contentServiceClient) RPCAddBanner(ctx context.Context, in *AddBannerRequest, opts ...grpc.CallOption) (*AddBannerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddBannerResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCAddBanner_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCGetBanners(ctx context.Context, in *GetBannersRequest, opts ...grpc.CallOption) (*GetBannersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetBannersResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCGetBanners_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCUpdateBanner(ctx context.Context, in *UpdateBannerRequest, opts ...grpc.CallOption) (*UpdateBannerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateBannerResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCUpdateBanner_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCDeleteBanner(ctx context.Context, in *DeleteBannerRequest, opts ...grpc.CallOption) (*DeleteBannerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteBannerResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCDeleteBanner_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ContentServiceServer is the server API for ContentService service.
 // All implementations must embed UnimplementedContentServiceServer
 // for forward compatibility.
@@ -444,6 +496,14 @@ type ContentServiceServer interface {
 	RPCDeleteFile(context.Context, *DeleteFileRequest) (*DeleteFileResponse, error)
 	// CT000026
 	RPCUpdateFile(context.Context, *UpdateFileRequest) (*UpdateFileResponse, error)
+	// CT000027
+	RPCAddBanner(context.Context, *AddBannerRequest) (*AddBannerResponse, error)
+	// CT0000028
+	RPCGetBanners(context.Context, *GetBannersRequest) (*GetBannersResponse, error)
+	// CT000029
+	RPCUpdateBanner(context.Context, *UpdateBannerRequest) (*UpdateBannerResponse, error)
+	// CT000030
+	RPCDeleteBanner(context.Context, *DeleteBannerRequest) (*DeleteBannerResponse, error)
 	mustEmbedUnimplementedContentServiceServer()
 }
 
@@ -534,6 +594,18 @@ func (UnimplementedContentServiceServer) RPCDeleteFile(context.Context, *DeleteF
 }
 func (UnimplementedContentServiceServer) RPCUpdateFile(context.Context, *UpdateFileRequest) (*UpdateFileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCUpdateFile not implemented")
+}
+func (UnimplementedContentServiceServer) RPCAddBanner(context.Context, *AddBannerRequest) (*AddBannerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCAddBanner not implemented")
+}
+func (UnimplementedContentServiceServer) RPCGetBanners(context.Context, *GetBannersRequest) (*GetBannersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCGetBanners not implemented")
+}
+func (UnimplementedContentServiceServer) RPCUpdateBanner(context.Context, *UpdateBannerRequest) (*UpdateBannerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCUpdateBanner not implemented")
+}
+func (UnimplementedContentServiceServer) RPCDeleteBanner(context.Context, *DeleteBannerRequest) (*DeleteBannerResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCDeleteBanner not implemented")
 }
 func (UnimplementedContentServiceServer) mustEmbedUnimplementedContentServiceServer() {}
 func (UnimplementedContentServiceServer) testEmbeddedByValue()                        {}
@@ -1042,6 +1114,78 @@ func _ContentService_RPCUpdateFile_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ContentService_RPCAddBanner_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddBannerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCAddBanner(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCAddBanner_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCAddBanner(ctx, req.(*AddBannerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCGetBanners_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBannersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCGetBanners(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCGetBanners_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCGetBanners(ctx, req.(*GetBannersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCUpdateBanner_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateBannerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCUpdateBanner(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCUpdateBanner_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCUpdateBanner(ctx, req.(*UpdateBannerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCDeleteBanner_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteBannerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCDeleteBanner(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCDeleteBanner_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCDeleteBanner(ctx, req.(*DeleteBannerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ContentService_ServiceDesc is the grpc.ServiceDesc for ContentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1156,6 +1300,22 @@ var ContentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RPCUpdateFile",
 			Handler:    _ContentService_RPCUpdateFile_Handler,
+		},
+		{
+			MethodName: "RPCAddBanner",
+			Handler:    _ContentService_RPCAddBanner_Handler,
+		},
+		{
+			MethodName: "RPCGetBanners",
+			Handler:    _ContentService_RPCGetBanners_Handler,
+		},
+		{
+			MethodName: "RPCUpdateBanner",
+			Handler:    _ContentService_RPCUpdateBanner_Handler,
+		},
+		{
+			MethodName: "RPCDeleteBanner",
+			Handler:    _ContentService_RPCDeleteBanner_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
