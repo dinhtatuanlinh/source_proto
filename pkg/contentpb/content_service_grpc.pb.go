@@ -50,6 +50,18 @@ const (
 	ContentService_RPCGetBanners_FullMethodName             = "/pb.ContentService/RPCGetBanners"
 	ContentService_RPCUpdateBanner_FullMethodName           = "/pb.ContentService/RPCUpdateBanner"
 	ContentService_RPCDeleteBanner_FullMethodName           = "/pb.ContentService/RPCDeleteBanner"
+	ContentService_RPCCreateDish_FullMethodName             = "/pb.ContentService/RPCCreateDish"
+	ContentService_RPCUpdateDish_FullMethodName             = "/pb.ContentService/RPCUpdateDish"
+	ContentService_RPCGetDish_FullMethodName                = "/pb.ContentService/RPCGetDish"
+	ContentService_RPCGetDishes_FullMethodName              = "/pb.ContentService/RPCGetDishes"
+	ContentService_RPCAddDishImage_FullMethodName           = "/pb.ContentService/RPCAddDishImage"
+	ContentService_RPCRemoveDishImage_FullMethodName        = "/pb.ContentService/RPCRemoveDishImage"
+	ContentService_RPCCreateProduct_FullMethodName          = "/pb.ContentService/RPCCreateProduct"
+	ContentService_RPCUpdateProduct_FullMethodName          = "/pb.ContentService/RPCUpdateProduct"
+	ContentService_RPCGetProduct_FullMethodName             = "/pb.ContentService/RPCGetProduct"
+	ContentService_RPCGetProducts_FullMethodName            = "/pb.ContentService/RPCGetProducts"
+	ContentService_RPCAddProductImage_FullMethodName        = "/pb.ContentService/RPCAddProductImage"
+	ContentService_RPCRemoveProductImage_FullMethodName     = "/pb.ContentService/RPCRemoveProductImage"
 )
 
 // ContentServiceClient is the client API for ContentService service.
@@ -118,6 +130,30 @@ type ContentServiceClient interface {
 	RPCUpdateBanner(ctx context.Context, in *UpdateBannerRequest, opts ...grpc.CallOption) (*UpdateBannerResponse, error)
 	// CT000030
 	RPCDeleteBanner(ctx context.Context, in *DeleteBannerRequest, opts ...grpc.CallOption) (*DeleteBannerResponse, error)
+	// CT000031
+	RPCCreateDish(ctx context.Context, in *CreateDishRequest, opts ...grpc.CallOption) (*CreateDishResponse, error)
+	// CT000032
+	RPCUpdateDish(ctx context.Context, in *UpdateDishRequest, opts ...grpc.CallOption) (*UpdateDishResponse, error)
+	// CT000033
+	RPCGetDish(ctx context.Context, in *GetDishRequest, opts ...grpc.CallOption) (*GetDishResponse, error)
+	// CT000034
+	RPCGetDishes(ctx context.Context, in *GetDishesRequest, opts ...grpc.CallOption) (*GetDishesResponse, error)
+	// CT000035
+	RPCAddDishImage(ctx context.Context, in *AddDishImageRequest, opts ...grpc.CallOption) (*AddDishImageResponse, error)
+	// CT000036
+	RPCRemoveDishImage(ctx context.Context, in *RemoveDishImageRequest, opts ...grpc.CallOption) (*RemoveDishImageResponse, error)
+	// CT000037
+	RPCCreateProduct(ctx context.Context, in *CreateProductRequest, opts ...grpc.CallOption) (*CreateProductResponse, error)
+	// CT000038
+	RPCUpdateProduct(ctx context.Context, in *UpdateProductRequest, opts ...grpc.CallOption) (*UpdateProductResponse, error)
+	// CT000039
+	RPCGetProduct(ctx context.Context, in *GetProductRequest, opts ...grpc.CallOption) (*GetProductResponse, error)
+	// CT000040
+	RPCGetProducts(ctx context.Context, in *GetProductsRequest, opts ...grpc.CallOption) (*GetProductsResponse, error)
+	// CT000041
+	RPCAddProductImage(ctx context.Context, in *AddProductImageRequest, opts ...grpc.CallOption) (*AddProductImageResponse, error)
+	// CT000041
+	RPCRemoveProductImage(ctx context.Context, in *RemoveProductImageRequest, opts ...grpc.CallOption) (*RemoveProductImageResponse, error)
 }
 
 type contentServiceClient struct {
@@ -438,6 +474,126 @@ func (c *contentServiceClient) RPCDeleteBanner(ctx context.Context, in *DeleteBa
 	return out, nil
 }
 
+func (c *contentServiceClient) RPCCreateDish(ctx context.Context, in *CreateDishRequest, opts ...grpc.CallOption) (*CreateDishResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateDishResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCCreateDish_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCUpdateDish(ctx context.Context, in *UpdateDishRequest, opts ...grpc.CallOption) (*UpdateDishResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateDishResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCUpdateDish_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCGetDish(ctx context.Context, in *GetDishRequest, opts ...grpc.CallOption) (*GetDishResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetDishResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCGetDish_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCGetDishes(ctx context.Context, in *GetDishesRequest, opts ...grpc.CallOption) (*GetDishesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetDishesResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCGetDishes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCAddDishImage(ctx context.Context, in *AddDishImageRequest, opts ...grpc.CallOption) (*AddDishImageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddDishImageResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCAddDishImage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCRemoveDishImage(ctx context.Context, in *RemoveDishImageRequest, opts ...grpc.CallOption) (*RemoveDishImageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveDishImageResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCRemoveDishImage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCCreateProduct(ctx context.Context, in *CreateProductRequest, opts ...grpc.CallOption) (*CreateProductResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateProductResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCCreateProduct_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCUpdateProduct(ctx context.Context, in *UpdateProductRequest, opts ...grpc.CallOption) (*UpdateProductResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateProductResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCUpdateProduct_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCGetProduct(ctx context.Context, in *GetProductRequest, opts ...grpc.CallOption) (*GetProductResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetProductResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCGetProduct_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCGetProducts(ctx context.Context, in *GetProductsRequest, opts ...grpc.CallOption) (*GetProductsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetProductsResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCGetProducts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCAddProductImage(ctx context.Context, in *AddProductImageRequest, opts ...grpc.CallOption) (*AddProductImageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddProductImageResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCAddProductImage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *contentServiceClient) RPCRemoveProductImage(ctx context.Context, in *RemoveProductImageRequest, opts ...grpc.CallOption) (*RemoveProductImageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RemoveProductImageResponse)
+	err := c.cc.Invoke(ctx, ContentService_RPCRemoveProductImage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ContentServiceServer is the server API for ContentService service.
 // All implementations must embed UnimplementedContentServiceServer
 // for forward compatibility.
@@ -504,6 +660,30 @@ type ContentServiceServer interface {
 	RPCUpdateBanner(context.Context, *UpdateBannerRequest) (*UpdateBannerResponse, error)
 	// CT000030
 	RPCDeleteBanner(context.Context, *DeleteBannerRequest) (*DeleteBannerResponse, error)
+	// CT000031
+	RPCCreateDish(context.Context, *CreateDishRequest) (*CreateDishResponse, error)
+	// CT000032
+	RPCUpdateDish(context.Context, *UpdateDishRequest) (*UpdateDishResponse, error)
+	// CT000033
+	RPCGetDish(context.Context, *GetDishRequest) (*GetDishResponse, error)
+	// CT000034
+	RPCGetDishes(context.Context, *GetDishesRequest) (*GetDishesResponse, error)
+	// CT000035
+	RPCAddDishImage(context.Context, *AddDishImageRequest) (*AddDishImageResponse, error)
+	// CT000036
+	RPCRemoveDishImage(context.Context, *RemoveDishImageRequest) (*RemoveDishImageResponse, error)
+	// CT000037
+	RPCCreateProduct(context.Context, *CreateProductRequest) (*CreateProductResponse, error)
+	// CT000038
+	RPCUpdateProduct(context.Context, *UpdateProductRequest) (*UpdateProductResponse, error)
+	// CT000039
+	RPCGetProduct(context.Context, *GetProductRequest) (*GetProductResponse, error)
+	// CT000040
+	RPCGetProducts(context.Context, *GetProductsRequest) (*GetProductsResponse, error)
+	// CT000041
+	RPCAddProductImage(context.Context, *AddProductImageRequest) (*AddProductImageResponse, error)
+	// CT000041
+	RPCRemoveProductImage(context.Context, *RemoveProductImageRequest) (*RemoveProductImageResponse, error)
 	mustEmbedUnimplementedContentServiceServer()
 }
 
@@ -606,6 +786,42 @@ func (UnimplementedContentServiceServer) RPCUpdateBanner(context.Context, *Updat
 }
 func (UnimplementedContentServiceServer) RPCDeleteBanner(context.Context, *DeleteBannerRequest) (*DeleteBannerResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCDeleteBanner not implemented")
+}
+func (UnimplementedContentServiceServer) RPCCreateDish(context.Context, *CreateDishRequest) (*CreateDishResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCCreateDish not implemented")
+}
+func (UnimplementedContentServiceServer) RPCUpdateDish(context.Context, *UpdateDishRequest) (*UpdateDishResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCUpdateDish not implemented")
+}
+func (UnimplementedContentServiceServer) RPCGetDish(context.Context, *GetDishRequest) (*GetDishResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCGetDish not implemented")
+}
+func (UnimplementedContentServiceServer) RPCGetDishes(context.Context, *GetDishesRequest) (*GetDishesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCGetDishes not implemented")
+}
+func (UnimplementedContentServiceServer) RPCAddDishImage(context.Context, *AddDishImageRequest) (*AddDishImageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCAddDishImage not implemented")
+}
+func (UnimplementedContentServiceServer) RPCRemoveDishImage(context.Context, *RemoveDishImageRequest) (*RemoveDishImageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCRemoveDishImage not implemented")
+}
+func (UnimplementedContentServiceServer) RPCCreateProduct(context.Context, *CreateProductRequest) (*CreateProductResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCCreateProduct not implemented")
+}
+func (UnimplementedContentServiceServer) RPCUpdateProduct(context.Context, *UpdateProductRequest) (*UpdateProductResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCUpdateProduct not implemented")
+}
+func (UnimplementedContentServiceServer) RPCGetProduct(context.Context, *GetProductRequest) (*GetProductResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCGetProduct not implemented")
+}
+func (UnimplementedContentServiceServer) RPCGetProducts(context.Context, *GetProductsRequest) (*GetProductsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCGetProducts not implemented")
+}
+func (UnimplementedContentServiceServer) RPCAddProductImage(context.Context, *AddProductImageRequest) (*AddProductImageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCAddProductImage not implemented")
+}
+func (UnimplementedContentServiceServer) RPCRemoveProductImage(context.Context, *RemoveProductImageRequest) (*RemoveProductImageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCRemoveProductImage not implemented")
 }
 func (UnimplementedContentServiceServer) mustEmbedUnimplementedContentServiceServer() {}
 func (UnimplementedContentServiceServer) testEmbeddedByValue()                        {}
@@ -1186,6 +1402,222 @@ func _ContentService_RPCDeleteBanner_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ContentService_RPCCreateDish_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateDishRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCCreateDish(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCCreateDish_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCCreateDish(ctx, req.(*CreateDishRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCUpdateDish_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateDishRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCUpdateDish(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCUpdateDish_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCUpdateDish(ctx, req.(*UpdateDishRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCGetDish_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetDishRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCGetDish(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCGetDish_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCGetDish(ctx, req.(*GetDishRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCGetDishes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetDishesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCGetDishes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCGetDishes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCGetDishes(ctx, req.(*GetDishesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCAddDishImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddDishImageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCAddDishImage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCAddDishImage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCAddDishImage(ctx, req.(*AddDishImageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCRemoveDishImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveDishImageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCRemoveDishImage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCRemoveDishImage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCRemoveDishImage(ctx, req.(*RemoveDishImageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCCreateProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateProductRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCCreateProduct(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCCreateProduct_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCCreateProduct(ctx, req.(*CreateProductRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCUpdateProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateProductRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCUpdateProduct(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCUpdateProduct_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCUpdateProduct(ctx, req.(*UpdateProductRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCGetProduct_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCGetProduct(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCGetProduct_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCGetProduct(ctx, req.(*GetProductRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCGetProducts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetProductsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCGetProducts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCGetProducts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCGetProducts(ctx, req.(*GetProductsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCAddProductImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddProductImageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCAddProductImage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCAddProductImage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCAddProductImage(ctx, req.(*AddProductImageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ContentService_RPCRemoveProductImage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveProductImageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ContentServiceServer).RPCRemoveProductImage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ContentService_RPCRemoveProductImage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ContentServiceServer).RPCRemoveProductImage(ctx, req.(*RemoveProductImageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ContentService_ServiceDesc is the grpc.ServiceDesc for ContentService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1316,6 +1748,54 @@ var ContentService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RPCDeleteBanner",
 			Handler:    _ContentService_RPCDeleteBanner_Handler,
+		},
+		{
+			MethodName: "RPCCreateDish",
+			Handler:    _ContentService_RPCCreateDish_Handler,
+		},
+		{
+			MethodName: "RPCUpdateDish",
+			Handler:    _ContentService_RPCUpdateDish_Handler,
+		},
+		{
+			MethodName: "RPCGetDish",
+			Handler:    _ContentService_RPCGetDish_Handler,
+		},
+		{
+			MethodName: "RPCGetDishes",
+			Handler:    _ContentService_RPCGetDishes_Handler,
+		},
+		{
+			MethodName: "RPCAddDishImage",
+			Handler:    _ContentService_RPCAddDishImage_Handler,
+		},
+		{
+			MethodName: "RPCRemoveDishImage",
+			Handler:    _ContentService_RPCRemoveDishImage_Handler,
+		},
+		{
+			MethodName: "RPCCreateProduct",
+			Handler:    _ContentService_RPCCreateProduct_Handler,
+		},
+		{
+			MethodName: "RPCUpdateProduct",
+			Handler:    _ContentService_RPCUpdateProduct_Handler,
+		},
+		{
+			MethodName: "RPCGetProduct",
+			Handler:    _ContentService_RPCGetProduct_Handler,
+		},
+		{
+			MethodName: "RPCGetProducts",
+			Handler:    _ContentService_RPCGetProducts_Handler,
+		},
+		{
+			MethodName: "RPCAddProductImage",
+			Handler:    _ContentService_RPCAddProductImage_Handler,
+		},
+		{
+			MethodName: "RPCRemoveProductImage",
+			Handler:    _ContentService_RPCRemoveProductImage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

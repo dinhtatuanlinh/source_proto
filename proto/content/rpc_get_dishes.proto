@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/protobuf/timestamp.proto";
+import "dish.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message GetDishesRequest {
+  repeated int64 dish_ids = 1;
+  optional string search = 2;
+  optional string author = 3;
+  optional google.protobuf.Timestamp published_at_from = 4;
+  optional google.protobuf.Timestamp published_at_to = 5;
+  optional int32 price_from = 6;
+  optional int32 price_to = 7;
+  optional string sort_by = 8;
+  optional string sort_direction = 9;
+  optional int32 limit = 10;
+  optional int32 offset = 11;
+  optional string status = 12;
+}
+
+message GetDishesResponse {
+  repeated Dish dishes = 1;
+  int32 total_case = 2;
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package pb;
+
+import "dish.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message GetDishRequest {
+  optional int64 dish_id = 1;
+  optional string title = 2;
+  optional string status = 3;
+}
+
+message GetDishResponse {
+  Dish dish = 1;
+}

@@ -32,6 +32,18 @@ import "rpc_add_banner.proto";
 import "rpc_update_banner.proto";
 import "rpc_get_banners.proto";
 import "rpc_delete_banner.proto";
+import "rpc_create_dish.proto";
+import "rpc_update_dish.proto";
+import "rpc_get_dish.proto";
+import "rpc_get_dishes.proto";
+import "rpc_add_dish_image.proto";
+import "rpc_remve_dish_image.proto";
+import "rpc_create_product.proto";
+import "rpc_update_product.proto";
+import "rpc_get_product.proto";
+import "rpc_get_products.proto";
+import "rpc_add_product_image.proto";
+import "rpc_remove_product_image.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
@@ -98,4 +110,28 @@ service ContentService {
   rpc RPCUpdateBanner (UpdateBannerRequest) returns (UpdateBannerResponse) {}
   // CT000030
   rpc RPCDeleteBanner (DeleteBannerRequest) returns (DeleteBannerResponse) {}
+  // CT000031
+  rpc RPCCreateDish (CreateDishRequest) returns (CreateDishResponse) {}
+  // CT000032
+  rpc RPCUpdateDish (UpdateDishRequest) returns (UpdateDishResponse) {}
+  // CT000033
+  rpc RPCGetDish (GetDishRequest) returns (GetDishResponse) {}
+  // CT000034
+  rpc RPCGetDishes (GetDishesRequest) returns (GetDishesResponse) {}
+  // CT000035
+  rpc RPCAddDishImage (AddDishImageRequest) returns (AddDishImageResponse) {}
+  // CT000036
+  rpc RPCRemoveDishImage (RemoveDishImageRequest) returns (RemoveDishImageResponse) {}
+  // CT000037
+  rpc RPCCreateProduct (CreateProductRequest) returns (CreateProductResponse) {}
+  // CT000038
+  rpc RPCUpdateProduct (UpdateProductRequest) returns (UpdateProductResponse) {}
+  // CT000039
+  rpc RPCGetProduct (GetProductRequest) returns (GetProductResponse) {}
+  // CT000040
+  rpc RPCGetProducts (GetProductsRequest) returns (GetProductsResponse) {}
+  // CT000041
+  rpc RPCAddProductImage (AddProductImageRequest) returns (AddProductImageResponse) {}
+  // CT000041
+  rpc RPCRemoveProductImage (RemoveProductImageRequest) returns (RemoveProductImageResponse) {}
 }

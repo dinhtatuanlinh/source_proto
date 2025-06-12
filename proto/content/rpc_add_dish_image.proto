@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package pb;
+
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message AddDishImageRequest {
+  int64 dish_id = 1;
+  int64 image_id = 2;
+}
+
+message AddDishImageResponse {
+}

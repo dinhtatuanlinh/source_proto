@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message Dish {
+  int64 dish_id = 1;
+  string name = 2;
+  int32 price = 3;
+  float discount_rate = 4;
+  int32 discount_amount = 5;
+  string description = 6;
+  string content = 7;
+  string author = 8;
+  string thumbnail_url = 9;
+  optional google.protobuf.Timestamp published_at = 10;
+  string status = 11;
+  repeated string images = 12;
+  google.protobuf.Timestamp created_at = 13;
+  int32 sale_price = 14;
+  google.protobuf.Timestamp discount_expired_at = 15;
+}
