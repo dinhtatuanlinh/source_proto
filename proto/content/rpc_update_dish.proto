@@ -16,7 +16,7 @@ message UpdateDishRequest {
   optional string thumbnail_url = 7;
   optional google.protobuf.Timestamp published_at = 8;
   optional string status = 9;
-  int64 post_id = 10;
+  int64 dish_id = 10;
   optional google.protobuf.Timestamp discount_expired_at = 11;
 }
 
