@@ -25,9 +25,9 @@ const (
 type UpdateDishRequest struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	Name              *string                `protobuf:"bytes,1,opt,name=name,proto3,oneof" json:"name,omitempty"`
-	Price             *int32                 `protobuf:"varint,2,opt,name=price,proto3,oneof" json:"price,omitempty"`
+	Price             *float32               `protobuf:"fixed32,2,opt,name=price,proto3,oneof" json:"price,omitempty"`
 	DiscountRate      *float32               `protobuf:"fixed32,3,opt,name=discount_rate,json=discountRate,proto3,oneof" json:"discount_rate,omitempty"`
-	DiscountAmount    *int32                 `protobuf:"varint,4,opt,name=discount_amount,json=discountAmount,proto3,oneof" json:"discount_amount,omitempty"`
+	DiscountAmount    *float32               `protobuf:"fixed32,4,opt,name=discount_amount,json=discountAmount,proto3,oneof" json:"discount_amount,omitempty"`
 	Description       *string                `protobuf:"bytes,55,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	Content           *string                `protobuf:"bytes,6,opt,name=content,proto3,oneof" json:"content,omitempty"`
 	ThumbnailUrl      *string                `protobuf:"bytes,7,opt,name=thumbnail_url,json=thumbnailUrl,proto3,oneof" json:"thumbnail_url,omitempty"`
@@ -76,7 +76,7 @@ func (x *UpdateDishRequest) GetName() string {
 	return ""
 }
 
-func (x *UpdateDishRequest) GetPrice() int32 {
+func (x *UpdateDishRequest) GetPrice() float32 {
 	if x != nil && x.Price != nil {
 		return *x.Price
 	}
@@ -90,7 +90,7 @@ func (x *UpdateDishRequest) GetDiscountRate() float32 {
 	return 0
 }
 
-func (x *UpdateDishRequest) GetDiscountAmount() int32 {
+func (x *UpdateDishRequest) GetDiscountAmount() float32 {
 	if x != nil && x.DiscountAmount != nil {
 		return *x.DiscountAmount
 	}
@@ -189,9 +189,9 @@ const file_rpc_update_dish_proto_rawDesc = "" +
 	"\x15rpc_update_dish.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf5\x04\n" +
 	"\x11UpdateDishRequest\x12\x17\n" +
 	"\x04name\x18\x01 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
-	"\x05price\x18\x02 \x01(\x05H\x01R\x05price\x88\x01\x01\x12(\n" +
+	"\x05price\x18\x02 \x01(\x02H\x01R\x05price\x88\x01\x01\x12(\n" +
 	"\rdiscount_rate\x18\x03 \x01(\x02H\x02R\fdiscountRate\x88\x01\x01\x12,\n" +
-	"\x0fdiscount_amount\x18\x04 \x01(\x05H\x03R\x0ediscountAmount\x88\x01\x01\x12%\n" +
+	"\x0fdiscount_amount\x18\x04 \x01(\x02H\x03R\x0ediscountAmount\x88\x01\x01\x12%\n" +
 	"\vdescription\x187 \x01(\tH\x04R\vdescription\x88\x01\x01\x12\x1d\n" +
 	"\acontent\x18\x06 \x01(\tH\x05R\acontent\x88\x01\x01\x12(\n" +
 	"\rthumbnail_url\x18\a \x01(\tH\x06R\fthumbnailUrl\x88\x01\x01\x12B\n" +

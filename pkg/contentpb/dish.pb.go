@@ -26,9 +26,9 @@ type Dish struct {
 	state             protoimpl.MessageState `protogen:"open.v1"`
 	DishId            int64                  `protobuf:"varint,1,opt,name=dish_id,json=dishId,proto3" json:"dish_id,omitempty"`
 	Name              string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Price             int32                  `protobuf:"varint,3,opt,name=price,proto3" json:"price,omitempty"`
+	Price             float32                `protobuf:"fixed32,3,opt,name=price,proto3" json:"price,omitempty"`
 	DiscountRate      float32                `protobuf:"fixed32,4,opt,name=discount_rate,json=discountRate,proto3" json:"discount_rate,omitempty"`
-	DiscountAmount    int32                  `protobuf:"varint,5,opt,name=discount_amount,json=discountAmount,proto3" json:"discount_amount,omitempty"`
+	DiscountAmount    float32                `protobuf:"fixed32,5,opt,name=discount_amount,json=discountAmount,proto3" json:"discount_amount,omitempty"`
 	Description       string                 `protobuf:"bytes,6,opt,name=description,proto3" json:"description,omitempty"`
 	Content           string                 `protobuf:"bytes,7,opt,name=content,proto3" json:"content,omitempty"`
 	Author            string                 `protobuf:"bytes,8,opt,name=author,proto3" json:"author,omitempty"`
@@ -87,7 +87,7 @@ func (x *Dish) GetName() string {
 	return ""
 }
 
-func (x *Dish) GetPrice() int32 {
+func (x *Dish) GetPrice() float32 {
 	if x != nil {
 		return x.Price
 	}
@@ -101,7 +101,7 @@ func (x *Dish) GetDiscountRate() float32 {
 	return 0
 }
 
-func (x *Dish) GetDiscountAmount() int32 {
+func (x *Dish) GetDiscountAmount() float32 {
 	if x != nil {
 		return x.DiscountAmount
 	}
@@ -187,9 +187,9 @@ const file_dish_proto_rawDesc = "" +
 	"\x04Dish\x12\x17\n" +
 	"\adish_id\x18\x01 \x01(\x03R\x06dishId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x14\n" +
-	"\x05price\x18\x03 \x01(\x05R\x05price\x12#\n" +
+	"\x05price\x18\x03 \x01(\x02R\x05price\x12#\n" +
 	"\rdiscount_rate\x18\x04 \x01(\x02R\fdiscountRate\x12'\n" +
-	"\x0fdiscount_amount\x18\x05 \x01(\x05R\x0ediscountAmount\x12 \n" +
+	"\x0fdiscount_amount\x18\x05 \x01(\x02R\x0ediscountAmount\x12 \n" +
 	"\vdescription\x18\x06 \x01(\tR\vdescription\x12\x18\n" +
 	"\acontent\x18\a \x01(\tR\acontent\x12\x16\n" +
 	"\x06author\x18\b \x01(\tR\x06author\x12#\n" +

@@ -37,7 +37,7 @@ import "rpc_update_dish.proto";
 import "rpc_get_dish.proto";
 import "rpc_get_dishes.proto";
 import "rpc_add_dish_image.proto";
-import "rpc_remve_dish_image.proto";
+import "rpc_remove_dish_image.proto";
 import "rpc_create_product.proto";
 import "rpc_update_product.proto";
 import "rpc_get_product.proto";

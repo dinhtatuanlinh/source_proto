@@ -24,7 +24,7 @@ var File_content_service_proto protoreflect.FileDescriptor
 
 const file_content_service_proto_rawDesc = "" +
 	"\n" +
-	"\x15content_service.proto\x12\x02pb\x1a\x15rpc_create_post.proto\x1a\x12rpc_get_post.proto\x1a\x13rpc_get_posts.proto\x1a\x15rpc_update_post.proto\x1a\x19rpc_create_category.proto\x1a\x16rpc_get_category.proto\x1a\x18rpc_get_categories.proto\x1a\x19rpc_update_category.proto\x1a\x14rpc_create_tag.proto\x1a\x11rpc_get_tag.proto\x1a\x12rpc_get_tags.proto\x1a\x14rpc_update_tag.proto\x1a\x1erpc_add_post_to_category.proto\x1a\x19rpc_add_post_to_tag.proto\x1a#rpc_remove_post_from_category.proto\x1a\x1erpc_remove_post_from_tag.proto\x1a\x1erpc_content_health_check.proto\x1a\x17rpc_upload_images.proto\x1a\x13rpc_get_image.proto\x1a\x14rpc_get_images.proto\x1a\x16rpc_delete_image.proto\x1a\x16rpc_update_image.proto\x1a\x15rpc_delete_file.proto\x1a\x12rpc_get_file.proto\x1a\x13rpc_get_files.proto\x1a\x15rpc_update_file.proto\x1a\x15rpc_upload_file.proto\x1a\x14rpc_add_banner.proto\x1a\x17rpc_update_banner.proto\x1a\x15rpc_get_banners.proto\x1a\x17rpc_delete_banner.proto\x1a\x15rpc_create_dish.proto\x1a\x15rpc_update_dish.proto\x1a\x12rpc_get_dish.proto\x1a\x14rpc_get_dishes.proto\x1a\x18rpc_add_dish_image.proto\x1a\x1arpc_remve_dish_image.proto\x1a\x18rpc_create_product.proto\x1a\x18rpc_update_product.proto\x1a\x15rpc_get_product.proto\x1a\x16rpc_get_products.proto\x1a\x1brpc_add_product_image.proto\x1a\x1erpc_remove_product_image.proto2\xcb\x17\n" +
+	"\x15content_service.proto\x12\x02pb\x1a\x15rpc_create_post.proto\x1a\x12rpc_get_post.proto\x1a\x13rpc_get_posts.proto\x1a\x15rpc_update_post.proto\x1a\x19rpc_create_category.proto\x1a\x16rpc_get_category.proto\x1a\x18rpc_get_categories.proto\x1a\x19rpc_update_category.proto\x1a\x14rpc_create_tag.proto\x1a\x11rpc_get_tag.proto\x1a\x12rpc_get_tags.proto\x1a\x14rpc_update_tag.proto\x1a\x1erpc_add_post_to_category.proto\x1a\x19rpc_add_post_to_tag.proto\x1a#rpc_remove_post_from_category.proto\x1a\x1erpc_remove_post_from_tag.proto\x1a\x1erpc_content_health_check.proto\x1a\x17rpc_upload_images.proto\x1a\x13rpc_get_image.proto\x1a\x14rpc_get_images.proto\x1a\x16rpc_delete_image.proto\x1a\x16rpc_update_image.proto\x1a\x15rpc_delete_file.proto\x1a\x12rpc_get_file.proto\x1a\x13rpc_get_files.proto\x1a\x15rpc_update_file.proto\x1a\x15rpc_upload_file.proto\x1a\x14rpc_add_banner.proto\x1a\x17rpc_update_banner.proto\x1a\x15rpc_get_banners.proto\x1a\x17rpc_delete_banner.proto\x1a\x15rpc_create_dish.proto\x1a\x15rpc_update_dish.proto\x1a\x12rpc_get_dish.proto\x1a\x14rpc_get_dishes.proto\x1a\x18rpc_add_dish_image.proto\x1a\x1brpc_remove_dish_image.proto\x1a\x18rpc_create_product.proto\x1a\x18rpc_update_product.proto\x1a\x15rpc_get_product.proto\x1a\x16rpc_get_products.proto\x1a\x1brpc_add_product_image.proto\x1a\x1erpc_remove_product_image.proto2\xcb\x17\n" +
 	"\x0eContentService\x12X\n" +
 	"\x15RPCContentHealthCheck\x12\x1d.pb.ContentHealthCheckRequest\x1a\x1e.pb.ContentHealthCheckResponse\"\x00\x12@\n" +
 	"\rRPCCreatePost\x12\x15.pb.CreatePostRequest\x1a\x16.pb.CreatePostResponse\"\x00\x127\n" +
@@ -297,7 +297,7 @@ func file_content_service_proto_init() {
 	file_rpc_get_dish_proto_init()
 	file_rpc_get_dishes_proto_init()
 	file_rpc_add_dish_image_proto_init()
-	file_rpc_remve_dish_image_proto_init()
+	file_rpc_remove_dish_image_proto_init()
 	file_rpc_create_product_proto_init()
 	file_rpc_update_product_proto_init()
 	file_rpc_get_product_proto_init()

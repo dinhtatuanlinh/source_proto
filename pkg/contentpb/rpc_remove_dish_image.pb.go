@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v6.32.1
-// source: rpc_remve_dish_image.proto
+// source: rpc_remove_dish_image.proto
 
 package source_proto
 
@@ -31,7 +31,7 @@ type RemoveDishImageRequest struct {
 
 func (x *RemoveDishImageRequest) Reset() {
 	*x = RemoveDishImageRequest{}
-	mi := &file_rpc_remve_dish_image_proto_msgTypes[0]
+	mi := &file_rpc_remove_dish_image_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *RemoveDishImageRequest) String() string {
 func (*RemoveDishImageRequest) ProtoMessage() {}
 
 func (x *RemoveDishImageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_remve_dish_image_proto_msgTypes[0]
+	mi := &file_rpc_remove_dish_image_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *RemoveDishImageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveDishImageRequest.ProtoReflect.Descriptor instead.
 func (*RemoveDishImageRequest) Descriptor() ([]byte, []int) {
-	return file_rpc_remve_dish_image_proto_rawDescGZIP(), []int{0}
+	return file_rpc_remove_dish_image_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RemoveDishImageRequest) GetDishId() int64 {
@@ -81,7 +81,7 @@ type RemoveDishImageResponse struct {
 
 func (x *RemoveDishImageResponse) Reset() {
 	*x = RemoveDishImageResponse{}
-	mi := &file_rpc_remve_dish_image_proto_msgTypes[1]
+	mi := &file_rpc_remove_dish_image_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -93,7 +93,7 @@ func (x *RemoveDishImageResponse) String() string {
 func (*RemoveDishImageResponse) ProtoMessage() {}
 
 func (x *RemoveDishImageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_rpc_remve_dish_image_proto_msgTypes[1]
+	mi := &file_rpc_remove_dish_image_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -106,37 +106,37 @@ func (x *RemoveDishImageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RemoveDishImageResponse.ProtoReflect.Descriptor instead.
 func (*RemoveDishImageResponse) Descriptor() ([]byte, []int) {
-	return file_rpc_remve_dish_image_proto_rawDescGZIP(), []int{1}
+	return file_rpc_remove_dish_image_proto_rawDescGZIP(), []int{1}
 }
 
-var File_rpc_remve_dish_image_proto protoreflect.FileDescriptor
+var File_rpc_remove_dish_image_proto protoreflect.FileDescriptor
 
-const file_rpc_remve_dish_image_proto_rawDesc = "" +
+const file_rpc_remove_dish_image_proto_rawDesc = "" +
 	"\n" +
-	"\x1arpc_remve_dish_image.proto\x12\x02pb\"L\n" +
+	"\x1brpc_remove_dish_image.proto\x12\x02pb\"L\n" +
 	"\x16RemoveDishImageRequest\x12\x17\n" +
 	"\adish_id\x18\x01 \x01(\x03R\x06dishId\x12\x19\n" +
 	"\bimage_id\x18\x02 \x01(\x03R\aimageId\"\x19\n" +
 	"\x17RemoveDishImageResponseB(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
 
 var (
-	file_rpc_remve_dish_image_proto_rawDescOnce sync.Once
-	file_rpc_remve_dish_image_proto_rawDescData []byte
+	file_rpc_remove_dish_image_proto_rawDescOnce sync.Once
+	file_rpc_remove_dish_image_proto_rawDescData []byte
 )
 
-func file_rpc_remve_dish_image_proto_rawDescGZIP() []byte {
-	file_rpc_remve_dish_image_proto_rawDescOnce.Do(func() {
-		file_rpc_remve_dish_image_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_rpc_remve_dish_image_proto_rawDesc), len(file_rpc_remve_dish_image_proto_rawDesc)))
+func file_rpc_remove_dish_image_proto_rawDescGZIP() []byte {
+	file_rpc_remove_dish_image_proto_rawDescOnce.Do(func() {
+		file_rpc_remove_dish_image_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_rpc_remove_dish_image_proto_rawDesc), len(file_rpc_remove_dish_image_proto_rawDesc)))
 	})
-	return file_rpc_remve_dish_image_proto_rawDescData
+	return file_rpc_remove_dish_image_proto_rawDescData
 }
 
-var file_rpc_remve_dish_image_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_rpc_remve_dish_image_proto_goTypes = []any{
+var file_rpc_remove_dish_image_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_rpc_remove_dish_image_proto_goTypes = []any{
 	(*RemoveDishImageRequest)(nil),  // 0: pb.RemoveDishImageRequest
 	(*RemoveDishImageResponse)(nil), // 1: pb.RemoveDishImageResponse
 }
-var file_rpc_remve_dish_image_proto_depIdxs = []int32{
+var file_rpc_remove_dish_image_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -144,26 +144,26 @@ var file_rpc_remve_dish_image_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_rpc_remve_dish_image_proto_init() }
-func file_rpc_remve_dish_image_proto_init() {
-	if File_rpc_remve_dish_image_proto != nil {
+func init() { file_rpc_remove_dish_image_proto_init() }
+func file_rpc_remove_dish_image_proto_init() {
+	if File_rpc_remove_dish_image_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_rpc_remve_dish_image_proto_rawDesc), len(file_rpc_remve_dish_image_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_rpc_remove_dish_image_proto_rawDesc), len(file_rpc_remove_dish_image_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_rpc_remve_dish_image_proto_goTypes,
-		DependencyIndexes: file_rpc_remve_dish_image_proto_depIdxs,
-		MessageInfos:      file_rpc_remve_dish_image_proto_msgTypes,
+		GoTypes:           file_rpc_remove_dish_image_proto_goTypes,
+		DependencyIndexes: file_rpc_remove_dish_image_proto_depIdxs,
+		MessageInfos:      file_rpc_remove_dish_image_proto_msgTypes,
 	}.Build()
-	File_rpc_remve_dish_image_proto = out.File
-	file_rpc_remve_dish_image_proto_goTypes = nil
-	file_rpc_remve_dish_image_proto_depIdxs = nil
+	File_rpc_remove_dish_image_proto = out.File
+	file_rpc_remove_dish_image_proto_goTypes = nil
+	file_rpc_remove_dish_image_proto_depIdxs = nil
 }
