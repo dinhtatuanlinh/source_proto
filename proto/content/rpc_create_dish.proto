@@ -8,9 +8,9 @@ option go_package = "github.com/dinhtatuanlinh/source_proto";
 
 message CreateDishRequest {
   string name = 1;
-  int32 price = 2;
+  float price = 2;
   float discount_rate = 3;
-  int32 discount_amount = 4;
+  float discount_amount = 4;
   string description = 5;
   string content = 6;
   string author = 7;
