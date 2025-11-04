@@ -10,4 +10,5 @@ message File {
   string name = 2;
   string link = 3;
   google.protobuf.Timestamp created_at = 4;
+  string type = 5;
 }

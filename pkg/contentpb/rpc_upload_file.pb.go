@@ -25,6 +25,7 @@ type UploadFileRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Link          string                 `protobuf:"bytes,1,opt,name=link,proto3" json:"link,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -69,6 +70,13 @@ func (x *UploadFileRequest) GetLink() string {
 func (x *UploadFileRequest) GetName() string {
 	if x != nil {
 		return x.Name
+	}
+	return ""
+}
+
+func (x *UploadFileRequest) GetType() string {
+	if x != nil {
+		return x.Type
 	}
 	return ""
 }
@@ -121,10 +129,11 @@ var File_rpc_upload_file_proto protoreflect.FileDescriptor
 
 const file_rpc_upload_file_proto_rawDesc = "" +
 	"\n" +
-	"\x15rpc_upload_file.proto\x12\x02pb\";\n" +
+	"\x15rpc_upload_file.proto\x12\x02pb\"O\n" +
 	"\x11UploadFileRequest\x12\x12\n" +
 	"\x04link\x18\x01 \x01(\tR\x04link\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\"(\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04type\x18\x03 \x01(\tR\x04type\"(\n" +
 	"\x12UploadFileResponse\x12\x12\n" +
 	"\x04link\x18\x01 \x01(\tR\x04linkB(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
 

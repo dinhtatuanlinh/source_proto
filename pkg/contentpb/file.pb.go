@@ -28,6 +28,7 @@ type File struct {
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Link          string                 `protobuf:"bytes,3,opt,name=link,proto3" json:"link,omitempty"`
 	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	Type          string                 `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -90,18 +91,26 @@ func (x *File) GetCreatedAt() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *File) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
 var File_file_proto protoreflect.FileDescriptor
 
 const file_file_proto_rawDesc = "" +
 	"\n" +
 	"\n" +
-	"file.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\"\x82\x01\n" +
+	"file.proto\x12\x02pb\x1a\x1fgoogle/protobuf/timestamp.proto\"\x96\x01\n" +
 	"\x04File\x12\x17\n" +
 	"\afile_id\x18\x01 \x01(\x03R\x06fileId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
 	"\x04link\x18\x03 \x01(\tR\x04link\x129\n" +
 	"\n" +
-	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAtB(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
+	"created_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x12\n" +
+	"\x04type\x18\x05 \x01(\tR\x04typeB(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
 
 var (
 	file_file_proto_rawDescOnce sync.Once
