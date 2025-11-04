@@ -26,6 +26,7 @@ type GetFilesRequest struct {
 	Name          *string                `protobuf:"bytes,1,opt,name=name,proto3,oneof" json:"name,omitempty"`
 	Limit         *int32                 `protobuf:"varint,2,opt,name=limit,proto3,oneof" json:"limit,omitempty"`
 	Offset        *int32                 `protobuf:"varint,3,opt,name=offset,proto3,oneof" json:"offset,omitempty"`
+	Type          *string                `protobuf:"bytes,4,opt,name=type,proto3,oneof" json:"type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -79,6 +80,13 @@ func (x *GetFilesRequest) GetOffset() int32 {
 		return *x.Offset
 	}
 	return 0
+}
+
+func (x *GetFilesRequest) GetType() string {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return ""
 }
 
 type GetFilesResponse struct {
@@ -138,14 +146,16 @@ var File_rpc_get_files_proto protoreflect.FileDescriptor
 const file_rpc_get_files_proto_rawDesc = "" +
 	"\n" +
 	"\x13rpc_get_files.proto\x12\x02pb\x1a\n" +
-	"file.proto\"\x80\x01\n" +
+	"file.proto\"\xa2\x01\n" +
 	"\x0fGetFilesRequest\x12\x17\n" +
 	"\x04name\x18\x01 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x19\n" +
 	"\x05limit\x18\x02 \x01(\x05H\x01R\x05limit\x88\x01\x01\x12\x1b\n" +
-	"\x06offset\x18\x03 \x01(\x05H\x02R\x06offset\x88\x01\x01B\a\n" +
+	"\x06offset\x18\x03 \x01(\x05H\x02R\x06offset\x88\x01\x01\x12\x17\n" +
+	"\x04type\x18\x04 \x01(\tH\x03R\x04type\x88\x01\x01B\a\n" +
 	"\x05_nameB\b\n" +
 	"\x06_limitB\t\n" +
-	"\a_offset\"Q\n" +
+	"\a_offsetB\a\n" +
+	"\x05_type\"Q\n" +
 	"\x10GetFilesResponse\x12\x1e\n" +
 	"\x05files\x18\x01 \x03(\v2\b.pb.FileR\x05files\x12\x1d\n" +
 	"\n" +

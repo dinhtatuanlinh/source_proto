@@ -10,6 +10,7 @@ message GetFilesRequest {
   optional string name = 1;
   optional int32 limit = 2;
   optional int32 offset = 3;
+  optional string type = 4;
 }
 
 message GetFilesResponse {
