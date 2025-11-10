@@ -191,6 +191,7 @@ func (x *UpdateRole) GetNotification() int32 {
 
 type UpdateOperatorResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	SecretCode    *string                `protobuf:"bytes,1,opt,name=secret_code,json=secretCode,proto3,oneof" json:"secret_code,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -225,6 +226,13 @@ func (*UpdateOperatorResponse) Descriptor() ([]byte, []int) {
 	return file_rpc_update_operator_proto_rawDescGZIP(), []int{2}
 }
 
+func (x *UpdateOperatorResponse) GetSecretCode() string {
+	if x != nil && x.SecretCode != nil {
+		return *x.SecretCode
+	}
+	return ""
+}
+
 var File_rpc_update_operator_proto protoreflect.FileDescriptor
 
 const file_rpc_update_operator_proto_rawDesc = "" +
@@ -254,8 +262,11 @@ const file_rpc_update_operator_proto_rawDesc = "" +
 	"\x06_adminB\v\n" +
 	"\t_operatorB\a\n" +
 	"\x05_postB\x0f\n" +
-	"\r_notification\"\x18\n" +
-	"\x16UpdateOperatorResponseB(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
+	"\r_notification\"N\n" +
+	"\x16UpdateOperatorResponse\x12$\n" +
+	"\vsecret_code\x18\x01 \x01(\tH\x00R\n" +
+	"secretCode\x88\x01\x01B\x0e\n" +
+	"\f_secret_codeB(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
 
 var (
 	file_rpc_update_operator_proto_rawDescOnce sync.Once
@@ -291,6 +302,7 @@ func file_rpc_update_operator_proto_init() {
 	}
 	file_rpc_update_operator_proto_msgTypes[0].OneofWrappers = []any{}
 	file_rpc_update_operator_proto_msgTypes[1].OneofWrappers = []any{}
+	file_rpc_update_operator_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
