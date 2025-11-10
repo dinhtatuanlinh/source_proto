@@ -11,10 +11,10 @@ proto:
 push:
 	git add .
 	git commit -m "update"
-	git tag v1.0.47
-	git push origin v1.0.47
+	git tag v1.0.48
+	git push origin v1.0.48
 	git checkout master
-	git merge v1.0.47
+	git merge v1.0.48
 	git push origin master
 
 .PHONY: proto push
