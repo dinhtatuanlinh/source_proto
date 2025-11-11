@@ -75,6 +75,8 @@ func (x *OperatorRenewPasswordRequest) GetNewPassword() string {
 
 type OperatorRenewPasswordResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	FullName      string                 `protobuf:"bytes,1,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
+	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -109,6 +111,20 @@ func (*OperatorRenewPasswordResponse) Descriptor() ([]byte, []int) {
 	return file_rpc_operator_renew_password_proto_rawDescGZIP(), []int{1}
 }
 
+func (x *OperatorRenewPasswordResponse) GetFullName() string {
+	if x != nil {
+		return x.FullName
+	}
+	return ""
+}
+
+func (x *OperatorRenewPasswordResponse) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
 var File_rpc_operator_renew_password_proto protoreflect.FileDescriptor
 
 const file_rpc_operator_renew_password_proto_rawDesc = "" +
@@ -117,8 +133,10 @@ const file_rpc_operator_renew_password_proto_rawDesc = "" +
 	"\x1cOperatorRenewPasswordRequest\x12\x1f\n" +
 	"\voperator_id\x18\x01 \x01(\x03R\n" +
 	"operatorId\x12!\n" +
-	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"\x1f\n" +
-	"\x1dOperatorRenewPasswordResponseB(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
+	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"R\n" +
+	"\x1dOperatorRenewPasswordResponse\x12\x1b\n" +
+	"\tfull_name\x18\x01 \x01(\tR\bfullName\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05emailB(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
 
 var (
 	file_rpc_operator_renew_password_proto_rawDescOnce sync.Once
