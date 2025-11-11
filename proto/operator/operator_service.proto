@@ -11,6 +11,7 @@ import "rpc_resend_operator_verification.proto";
 import "rpc_check_admin_existing.proto";
 import "rpc_first_change_password.proto";
 import "rpc_operator_health_check.proto";
+import "rpc_admin_forgot_password.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
@@ -35,4 +36,6 @@ service OperatorService {
   rpc RPCCheckAdminExisting (CheckAdminExistingRequest) returns (CheckAdminExistingResponse) {}
 //  op000009
   rpc RPCFirstChangePassword (FirstChangePasswordRequest) returns (FirstChangePasswordResponse) {}
+  //  op000010
+  rpc RPCAdminForgotPassword (AdminForgotPasswordRequest) returns (AdminForgotPasswordResponse) {}
 }

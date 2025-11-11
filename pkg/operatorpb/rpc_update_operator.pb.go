@@ -22,17 +22,16 @@ const (
 )
 
 type UpdateOperatorRequest struct {
-	state            protoimpl.MessageState `protogen:"open.v1"`
-	OperatorId       int64                  `protobuf:"varint,1,opt,name=operator_id,json=operatorId,proto3" json:"operator_id,omitempty"`
-	Email            *string                `protobuf:"bytes,2,opt,name=email,proto3,oneof" json:"email,omitempty"`
-	PhoneNumber      *string                `protobuf:"bytes,3,opt,name=phone_number,json=phoneNumber,proto3,oneof" json:"phone_number,omitempty"`
-	OldPassword      *string                `protobuf:"bytes,4,opt,name=old_password,json=oldPassword,proto3,oneof" json:"old_password,omitempty"`
-	NewPassword      *string                `protobuf:"bytes,5,opt,name=new_password,json=newPassword,proto3,oneof" json:"new_password,omitempty"`
-	Status           *string                `protobuf:"bytes,6,opt,name=status,proto3,oneof" json:"status,omitempty"`
-	Role             *UpdateRole            `protobuf:"bytes,7,opt,name=role,proto3" json:"role,omitempty"`
-	IsForgotPassword bool                   `protobuf:"varint,8,opt,name=is_forgot_password,json=isForgotPassword,proto3" json:"is_forgot_password,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	OperatorId    int64                  `protobuf:"varint,1,opt,name=operator_id,json=operatorId,proto3" json:"operator_id,omitempty"`
+	Email         *string                `protobuf:"bytes,2,opt,name=email,proto3,oneof" json:"email,omitempty"`
+	PhoneNumber   *string                `protobuf:"bytes,3,opt,name=phone_number,json=phoneNumber,proto3,oneof" json:"phone_number,omitempty"`
+	OldPassword   *string                `protobuf:"bytes,4,opt,name=old_password,json=oldPassword,proto3,oneof" json:"old_password,omitempty"`
+	NewPassword   *string                `protobuf:"bytes,5,opt,name=new_password,json=newPassword,proto3,oneof" json:"new_password,omitempty"`
+	Status        *string                `protobuf:"bytes,6,opt,name=status,proto3,oneof" json:"status,omitempty"`
+	Role          *UpdateRole            `protobuf:"bytes,7,opt,name=role,proto3" json:"role,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateOperatorRequest) Reset() {
@@ -114,13 +113,6 @@ func (x *UpdateOperatorRequest) GetRole() *UpdateRole {
 	return nil
 }
 
-func (x *UpdateOperatorRequest) GetIsForgotPassword() bool {
-	if x != nil {
-		return x.IsForgotPassword
-	}
-	return false
-}
-
 type UpdateRole struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Admin         *int32                 `protobuf:"varint,1,opt,name=admin,proto3,oneof" json:"admin,omitempty"`
@@ -191,7 +183,6 @@ func (x *UpdateRole) GetNotification() int32 {
 
 type UpdateOperatorResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	SecretCode    *string                `protobuf:"bytes,1,opt,name=secret_code,json=secretCode,proto3,oneof" json:"secret_code,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -226,18 +217,11 @@ func (*UpdateOperatorResponse) Descriptor() ([]byte, []int) {
 	return file_rpc_update_operator_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *UpdateOperatorResponse) GetSecretCode() string {
-	if x != nil && x.SecretCode != nil {
-		return *x.SecretCode
-	}
-	return ""
-}
-
 var File_rpc_update_operator_proto protoreflect.FileDescriptor
 
 const file_rpc_update_operator_proto_rawDesc = "" +
 	"\n" +
-	"\x19rpc_update_operator.proto\"\xff\x02\n" +
+	"\x19rpc_update_operator.proto\"\xd1\x02\n" +
 	"\x15UpdateOperatorRequest\x12\x1f\n" +
 	"\voperator_id\x18\x01 \x01(\x03R\n" +
 	"operatorId\x12\x19\n" +
@@ -246,8 +230,7 @@ const file_rpc_update_operator_proto_rawDesc = "" +
 	"\fold_password\x18\x04 \x01(\tH\x02R\voldPassword\x88\x01\x01\x12&\n" +
 	"\fnew_password\x18\x05 \x01(\tH\x03R\vnewPassword\x88\x01\x01\x12\x1b\n" +
 	"\x06status\x18\x06 \x01(\tH\x04R\x06status\x88\x01\x01\x12\x1f\n" +
-	"\x04role\x18\a \x01(\v2\v.UpdateRoleR\x04role\x12,\n" +
-	"\x12is_forgot_password\x18\b \x01(\bR\x10isForgotPasswordB\b\n" +
+	"\x04role\x18\a \x01(\v2\v.UpdateRoleR\x04roleB\b\n" +
 	"\x06_emailB\x0f\n" +
 	"\r_phone_numberB\x0f\n" +
 	"\r_old_passwordB\x0f\n" +
@@ -262,11 +245,8 @@ const file_rpc_update_operator_proto_rawDesc = "" +
 	"\x06_adminB\v\n" +
 	"\t_operatorB\a\n" +
 	"\x05_postB\x0f\n" +
-	"\r_notification\"N\n" +
-	"\x16UpdateOperatorResponse\x12$\n" +
-	"\vsecret_code\x18\x01 \x01(\tH\x00R\n" +
-	"secretCode\x88\x01\x01B\x0e\n" +
-	"\f_secret_codeB(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
+	"\r_notification\"\x18\n" +
+	"\x16UpdateOperatorResponseB(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
 
 var (
 	file_rpc_update_operator_proto_rawDescOnce sync.Once
@@ -302,7 +282,6 @@ func file_rpc_update_operator_proto_init() {
 	}
 	file_rpc_update_operator_proto_msgTypes[0].OneofWrappers = []any{}
 	file_rpc_update_operator_proto_msgTypes[1].OneofWrappers = []any{}
-	file_rpc_update_operator_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

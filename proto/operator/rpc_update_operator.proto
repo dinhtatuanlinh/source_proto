@@ -10,7 +10,6 @@ message UpdateOperatorRequest {
   optional string new_password = 5;
   optional string status = 6;
   UpdateRole role = 7;
-  bool is_forgot_password = 8;
 }
 
 message UpdateRole {
@@ -21,5 +20,4 @@ message UpdateRole {
 }
 
 message UpdateOperatorResponse {
-  optional string secret_code = 1;
 }
