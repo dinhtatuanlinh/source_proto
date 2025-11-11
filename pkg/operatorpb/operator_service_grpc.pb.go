@@ -30,6 +30,7 @@ const (
 	OperatorService_RPCCheckAdminExisting_FullMethodName         = "/pb.OperatorService/RPCCheckAdminExisting"
 	OperatorService_RPCFirstChangePassword_FullMethodName        = "/pb.OperatorService/RPCFirstChangePassword"
 	OperatorService_RPCAdminForgotPassword_FullMethodName        = "/pb.OperatorService/RPCAdminForgotPassword"
+	OperatorService_RPCOperatorRenewPassword_FullMethodName      = "/pb.OperatorService/RPCOperatorRenewPassword"
 )
 
 // OperatorServiceClient is the client API for OperatorService service.
@@ -58,6 +59,8 @@ type OperatorServiceClient interface {
 	RPCFirstChangePassword(ctx context.Context, in *FirstChangePasswordRequest, opts ...grpc.CallOption) (*FirstChangePasswordResponse, error)
 	// op000010
 	RPCAdminForgotPassword(ctx context.Context, in *AdminForgotPasswordRequest, opts ...grpc.CallOption) (*AdminForgotPasswordResponse, error)
+	// op000011
+	RPCOperatorRenewPassword(ctx context.Context, in *OperatorRenewPasswordRequest, opts ...grpc.CallOption) (*OperatorRenewPasswordResponse, error)
 }
 
 type operatorServiceClient struct {
@@ -178,6 +181,16 @@ func (c *operatorServiceClient) RPCAdminForgotPassword(ctx context.Context, in *
 	return out, nil
 }
 
+func (c *operatorServiceClient) RPCOperatorRenewPassword(ctx context.Context, in *OperatorRenewPasswordRequest, opts ...grpc.CallOption) (*OperatorRenewPasswordResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(OperatorRenewPasswordResponse)
+	err := c.cc.Invoke(ctx, OperatorService_RPCOperatorRenewPassword_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OperatorServiceServer is the server API for OperatorService service.
 // All implementations must embed UnimplementedOperatorServiceServer
 // for forward compatibility.
@@ -204,6 +217,8 @@ type OperatorServiceServer interface {
 	RPCFirstChangePassword(context.Context, *FirstChangePasswordRequest) (*FirstChangePasswordResponse, error)
 	// op000010
 	RPCAdminForgotPassword(context.Context, *AdminForgotPasswordRequest) (*AdminForgotPasswordResponse, error)
+	// op000011
+	RPCOperatorRenewPassword(context.Context, *OperatorRenewPasswordRequest) (*OperatorRenewPasswordResponse, error)
 	mustEmbedUnimplementedOperatorServiceServer()
 }
 
@@ -246,6 +261,9 @@ func (UnimplementedOperatorServiceServer) RPCFirstChangePassword(context.Context
 }
 func (UnimplementedOperatorServiceServer) RPCAdminForgotPassword(context.Context, *AdminForgotPasswordRequest) (*AdminForgotPasswordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCAdminForgotPassword not implemented")
+}
+func (UnimplementedOperatorServiceServer) RPCOperatorRenewPassword(context.Context, *OperatorRenewPasswordRequest) (*OperatorRenewPasswordResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCOperatorRenewPassword not implemented")
 }
 func (UnimplementedOperatorServiceServer) mustEmbedUnimplementedOperatorServiceServer() {}
 func (UnimplementedOperatorServiceServer) testEmbeddedByValue()                         {}
@@ -466,6 +484,24 @@ func _OperatorService_RPCAdminForgotPassword_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OperatorService_RPCOperatorRenewPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(OperatorRenewPasswordRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OperatorServiceServer).RPCOperatorRenewPassword(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OperatorService_RPCOperatorRenewPassword_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OperatorServiceServer).RPCOperatorRenewPassword(ctx, req.(*OperatorRenewPasswordRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OperatorService_ServiceDesc is the grpc.ServiceDesc for OperatorService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -516,6 +552,10 @@ var OperatorService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RPCAdminForgotPassword",
 			Handler:    _OperatorService_RPCAdminForgotPassword_Handler,
+		},
+		{
+			MethodName: "RPCOperatorRenewPassword",
+			Handler:    _OperatorService_RPCOperatorRenewPassword_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
