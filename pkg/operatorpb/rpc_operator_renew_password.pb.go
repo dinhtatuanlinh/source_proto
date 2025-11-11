@@ -24,6 +24,7 @@ const (
 type OperatorRenewPasswordRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	OperatorId    int64                  `protobuf:"varint,1,opt,name=operator_id,json=operatorId,proto3" json:"operator_id,omitempty"`
+	NewPassword   string                 `protobuf:"bytes,2,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -63,6 +64,13 @@ func (x *OperatorRenewPasswordRequest) GetOperatorId() int64 {
 		return x.OperatorId
 	}
 	return 0
+}
+
+func (x *OperatorRenewPasswordRequest) GetNewPassword() string {
+	if x != nil {
+		return x.NewPassword
+	}
+	return ""
 }
 
 type OperatorRenewPasswordResponse struct {
@@ -105,10 +113,11 @@ var File_rpc_operator_renew_password_proto protoreflect.FileDescriptor
 
 const file_rpc_operator_renew_password_proto_rawDesc = "" +
 	"\n" +
-	"!rpc_operator_renew_password.proto\"?\n" +
+	"!rpc_operator_renew_password.proto\"b\n" +
 	"\x1cOperatorRenewPasswordRequest\x12\x1f\n" +
 	"\voperator_id\x18\x01 \x01(\x03R\n" +
-	"operatorId\"\x1f\n" +
+	"operatorId\x12!\n" +
+	"\fnew_password\x18\x02 \x01(\tR\vnewPassword\"\x1f\n" +
 	"\x1dOperatorRenewPasswordResponseB(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
 
 var (
