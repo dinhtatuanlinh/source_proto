@@ -31,6 +31,8 @@ const (
 	OperatorService_RPCFirstChangePassword_FullMethodName        = "/pb.OperatorService/RPCFirstChangePassword"
 	OperatorService_RPCAdminForgotPassword_FullMethodName        = "/pb.OperatorService/RPCAdminForgotPassword"
 	OperatorService_RPCOperatorRenewPassword_FullMethodName      = "/pb.OperatorService/RPCOperatorRenewPassword"
+	OperatorService_RPCLockOperator_FullMethodName               = "/pb.OperatorService/RPCLockOperator"
+	OperatorService_RPCUnlockOperator_FullMethodName             = "/pb.OperatorService/RPCUnlockOperator"
 )
 
 // OperatorServiceClient is the client API for OperatorService service.
@@ -61,6 +63,10 @@ type OperatorServiceClient interface {
 	RPCAdminForgotPassword(ctx context.Context, in *AdminForgotPasswordRequest, opts ...grpc.CallOption) (*AdminForgotPasswordResponse, error)
 	// op000011
 	RPCOperatorRenewPassword(ctx context.Context, in *OperatorRenewPasswordRequest, opts ...grpc.CallOption) (*OperatorRenewPasswordResponse, error)
+	// op000012
+	RPCLockOperator(ctx context.Context, in *LockOperatorRequest, opts ...grpc.CallOption) (*LockOperatorResponse, error)
+	// op000013
+	RPCUnlockOperator(ctx context.Context, in *UnlockOperatorRequest, opts ...grpc.CallOption) (*UnlockOperatorResponse, error)
 }
 
 type operatorServiceClient struct {
@@ -191,6 +197,26 @@ func (c *operatorServiceClient) RPCOperatorRenewPassword(ctx context.Context, in
 	return out, nil
 }
 
+func (c *operatorServiceClient) RPCLockOperator(ctx context.Context, in *LockOperatorRequest, opts ...grpc.CallOption) (*LockOperatorResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(LockOperatorResponse)
+	err := c.cc.Invoke(ctx, OperatorService_RPCLockOperator_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *operatorServiceClient) RPCUnlockOperator(ctx context.Context, in *UnlockOperatorRequest, opts ...grpc.CallOption) (*UnlockOperatorResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UnlockOperatorResponse)
+	err := c.cc.Invoke(ctx, OperatorService_RPCUnlockOperator_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // OperatorServiceServer is the server API for OperatorService service.
 // All implementations must embed UnimplementedOperatorServiceServer
 // for forward compatibility.
@@ -219,6 +245,10 @@ type OperatorServiceServer interface {
 	RPCAdminForgotPassword(context.Context, *AdminForgotPasswordRequest) (*AdminForgotPasswordResponse, error)
 	// op000011
 	RPCOperatorRenewPassword(context.Context, *OperatorRenewPasswordRequest) (*OperatorRenewPasswordResponse, error)
+	// op000012
+	RPCLockOperator(context.Context, *LockOperatorRequest) (*LockOperatorResponse, error)
+	// op000013
+	RPCUnlockOperator(context.Context, *UnlockOperatorRequest) (*UnlockOperatorResponse, error)
 	mustEmbedUnimplementedOperatorServiceServer()
 }
 
@@ -264,6 +294,12 @@ func (UnimplementedOperatorServiceServer) RPCAdminForgotPassword(context.Context
 }
 func (UnimplementedOperatorServiceServer) RPCOperatorRenewPassword(context.Context, *OperatorRenewPasswordRequest) (*OperatorRenewPasswordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RPCOperatorRenewPassword not implemented")
+}
+func (UnimplementedOperatorServiceServer) RPCLockOperator(context.Context, *LockOperatorRequest) (*LockOperatorResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCLockOperator not implemented")
+}
+func (UnimplementedOperatorServiceServer) RPCUnlockOperator(context.Context, *UnlockOperatorRequest) (*UnlockOperatorResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RPCUnlockOperator not implemented")
 }
 func (UnimplementedOperatorServiceServer) mustEmbedUnimplementedOperatorServiceServer() {}
 func (UnimplementedOperatorServiceServer) testEmbeddedByValue()                         {}
@@ -502,6 +538,42 @@ func _OperatorService_RPCOperatorRenewPassword_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _OperatorService_RPCLockOperator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LockOperatorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OperatorServiceServer).RPCLockOperator(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OperatorService_RPCLockOperator_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OperatorServiceServer).RPCLockOperator(ctx, req.(*LockOperatorRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _OperatorService_RPCUnlockOperator_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnlockOperatorRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(OperatorServiceServer).RPCUnlockOperator(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: OperatorService_RPCUnlockOperator_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(OperatorServiceServer).RPCUnlockOperator(ctx, req.(*UnlockOperatorRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // OperatorService_ServiceDesc is the grpc.ServiceDesc for OperatorService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -556,6 +628,14 @@ var OperatorService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RPCOperatorRenewPassword",
 			Handler:    _OperatorService_RPCOperatorRenewPassword_Handler,
+		},
+		{
+			MethodName: "RPCLockOperator",
+			Handler:    _OperatorService_RPCLockOperator_Handler,
+		},
+		{
+			MethodName: "RPCUnlockOperator",
+			Handler:    _OperatorService_RPCUnlockOperator_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

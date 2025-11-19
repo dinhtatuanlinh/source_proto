@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message UnlockOperatorRequest {
+  int64 operator_id = 1;
+}
+
+message UnlockOperatorResponse {
+}

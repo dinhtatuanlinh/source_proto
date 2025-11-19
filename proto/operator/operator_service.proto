@@ -13,6 +13,8 @@ import "rpc_first_change_password.proto";
 import "rpc_operator_health_check.proto";
 import "rpc_admin_forgot_password.proto";
 import "rpc_operator_renew_password.proto";
+import "rpc_lock_operator.proto";
+import "rpc_unlock_operator.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
@@ -41,4 +43,8 @@ service OperatorService {
   rpc RPCAdminForgotPassword (AdminForgotPasswordRequest) returns (AdminForgotPasswordResponse) {}
   //  op000011
   rpc RPCOperatorRenewPassword (OperatorRenewPasswordRequest) returns (OperatorRenewPasswordResponse) {}
+  //  op000012
+  rpc RPCLockOperator (LockOperatorRequest) returns (LockOperatorResponse) {}
+  //  op000013
+  rpc RPCUnlockOperator (UnlockOperatorRequest) returns (UnlockOperatorResponse) {}
 }

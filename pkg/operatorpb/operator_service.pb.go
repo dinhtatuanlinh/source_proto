@@ -24,7 +24,7 @@ var File_operator_service_proto protoreflect.FileDescriptor
 
 const file_operator_service_proto_rawDesc = "" +
 	"\n" +
-	"\x16operator_service.proto\x12\x02pb\x1a\x19rpc_create_operator.proto\x1a\x19rpc_verify_operator.proto\x1a\x16rpc_get_operator.proto\x1a\x1brpc_get_operator_list.proto\x1a\x19rpc_update_operator.proto\x1a&rpc_resend_operator_verification.proto\x1a\x1erpc_check_admin_existing.proto\x1a\x1frpc_first_change_password.proto\x1a\x1frpc_operator_health_check.proto\x1a\x1frpc_admin_forgot_password.proto\x1a!rpc_operator_renew_password.proto2\x8a\b\n" +
+	"\x16operator_service.proto\x12\x02pb\x1a\x19rpc_create_operator.proto\x1a\x19rpc_verify_operator.proto\x1a\x16rpc_get_operator.proto\x1a\x1brpc_get_operator_list.proto\x1a\x19rpc_update_operator.proto\x1a&rpc_resend_operator_verification.proto\x1a\x1erpc_check_admin_existing.proto\x1a\x1frpc_first_change_password.proto\x1a\x1frpc_operator_health_check.proto\x1a\x1frpc_admin_forgot_password.proto\x1a!rpc_operator_renew_password.proto\x1a\x17rpc_lock_operator.proto\x1a\x19rpc_unlock_operator.proto2\x94\t\n" +
 	"\x0fOperatorService\x12[\n" +
 	"\x16RPCOperatorHealthCheck\x12\x1e.pb.OperatorHealthCheckRequest\x1a\x1f.pb.OperatorHealthCheckResponse\"\x00\x12I\n" +
 	"\x0eRPCCreateAdmin\x12\x19.pb.CreateOperatorRequest\x1a\x1a.pb.CreateOperatorResponse\"\x00\x12L\n" +
@@ -37,7 +37,9 @@ const file_operator_service_proto_rawDesc = "" +
 	"\x15RPCCheckAdminExisting\x12\x1d.pb.CheckAdminExistingRequest\x1a\x1e.pb.CheckAdminExistingResponse\"\x00\x12[\n" +
 	"\x16RPCFirstChangePassword\x12\x1e.pb.FirstChangePasswordRequest\x1a\x1f.pb.FirstChangePasswordResponse\"\x00\x12U\n" +
 	"\x16RPCAdminForgotPassword\x12\x1b.AdminForgotPasswordRequest\x1a\x1c.AdminForgotPasswordResponse\"\x00\x12[\n" +
-	"\x18RPCOperatorRenewPassword\x12\x1d.OperatorRenewPasswordRequest\x1a\x1e.OperatorRenewPasswordResponse\"\x00B(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
+	"\x18RPCOperatorRenewPassword\x12\x1d.OperatorRenewPasswordRequest\x1a\x1e.OperatorRenewPasswordResponse\"\x00\x12@\n" +
+	"\x0fRPCLockOperator\x12\x14.LockOperatorRequest\x1a\x15.LockOperatorResponse\"\x00\x12F\n" +
+	"\x11RPCUnlockOperator\x12\x16.UnlockOperatorRequest\x1a\x17.UnlockOperatorResponse\"\x00B(Z&github.com/dinhtatuanlinh/source_protob\x06proto3"
 
 var file_operator_service_proto_goTypes = []any{
 	(*OperatorHealthCheckRequest)(nil),         // 0: pb.OperatorHealthCheckRequest
@@ -51,17 +53,21 @@ var file_operator_service_proto_goTypes = []any{
 	(*FirstChangePasswordRequest)(nil),         // 8: pb.FirstChangePasswordRequest
 	(*AdminForgotPasswordRequest)(nil),         // 9: AdminForgotPasswordRequest
 	(*OperatorRenewPasswordRequest)(nil),       // 10: OperatorRenewPasswordRequest
-	(*OperatorHealthCheckResponse)(nil),        // 11: pb.OperatorHealthCheckResponse
-	(*CreateOperatorResponse)(nil),             // 12: pb.CreateOperatorResponse
-	(*VerifyOperatorResponse)(nil),             // 13: pb.VerifyOperatorResponse
-	(*GetOperatorResponse)(nil),                // 14: pb.GetOperatorResponse
-	(*GetOperatorListResponse)(nil),            // 15: pb.GetOperatorListResponse
-	(*UpdateOperatorResponse)(nil),             // 16: UpdateOperatorResponse
-	(*ResendOperatorVerificationResponse)(nil), // 17: ResendOperatorVerificationResponse
-	(*CheckAdminExistingResponse)(nil),         // 18: pb.CheckAdminExistingResponse
-	(*FirstChangePasswordResponse)(nil),        // 19: pb.FirstChangePasswordResponse
-	(*AdminForgotPasswordResponse)(nil),        // 20: AdminForgotPasswordResponse
-	(*OperatorRenewPasswordResponse)(nil),      // 21: OperatorRenewPasswordResponse
+	(*LockOperatorRequest)(nil),                // 11: LockOperatorRequest
+	(*UnlockOperatorRequest)(nil),              // 12: UnlockOperatorRequest
+	(*OperatorHealthCheckResponse)(nil),        // 13: pb.OperatorHealthCheckResponse
+	(*CreateOperatorResponse)(nil),             // 14: pb.CreateOperatorResponse
+	(*VerifyOperatorResponse)(nil),             // 15: pb.VerifyOperatorResponse
+	(*GetOperatorResponse)(nil),                // 16: pb.GetOperatorResponse
+	(*GetOperatorListResponse)(nil),            // 17: pb.GetOperatorListResponse
+	(*UpdateOperatorResponse)(nil),             // 18: UpdateOperatorResponse
+	(*ResendOperatorVerificationResponse)(nil), // 19: ResendOperatorVerificationResponse
+	(*CheckAdminExistingResponse)(nil),         // 20: pb.CheckAdminExistingResponse
+	(*FirstChangePasswordResponse)(nil),        // 21: pb.FirstChangePasswordResponse
+	(*AdminForgotPasswordResponse)(nil),        // 22: AdminForgotPasswordResponse
+	(*OperatorRenewPasswordResponse)(nil),      // 23: OperatorRenewPasswordResponse
+	(*LockOperatorResponse)(nil),               // 24: LockOperatorResponse
+	(*UnlockOperatorResponse)(nil),             // 25: UnlockOperatorResponse
 }
 var file_operator_service_proto_depIdxs = []int32{
 	0,  // 0: pb.OperatorService.RPCOperatorHealthCheck:input_type -> pb.OperatorHealthCheckRequest
@@ -76,20 +82,24 @@ var file_operator_service_proto_depIdxs = []int32{
 	8,  // 9: pb.OperatorService.RPCFirstChangePassword:input_type -> pb.FirstChangePasswordRequest
 	9,  // 10: pb.OperatorService.RPCAdminForgotPassword:input_type -> AdminForgotPasswordRequest
 	10, // 11: pb.OperatorService.RPCOperatorRenewPassword:input_type -> OperatorRenewPasswordRequest
-	11, // 12: pb.OperatorService.RPCOperatorHealthCheck:output_type -> pb.OperatorHealthCheckResponse
-	12, // 13: pb.OperatorService.RPCCreateAdmin:output_type -> pb.CreateOperatorResponse
-	12, // 14: pb.OperatorService.RPCCreateOperator:output_type -> pb.CreateOperatorResponse
-	13, // 15: pb.OperatorService.RPCVerifyOperator:output_type -> pb.VerifyOperatorResponse
-	14, // 16: pb.OperatorService.RPCGetOperator:output_type -> pb.GetOperatorResponse
-	15, // 17: pb.OperatorService.RPCGetOperatorList:output_type -> pb.GetOperatorListResponse
-	16, // 18: pb.OperatorService.RPCUpdateOperator:output_type -> UpdateOperatorResponse
-	17, // 19: pb.OperatorService.RPCResendOperatorVerification:output_type -> ResendOperatorVerificationResponse
-	18, // 20: pb.OperatorService.RPCCheckAdminExisting:output_type -> pb.CheckAdminExistingResponse
-	19, // 21: pb.OperatorService.RPCFirstChangePassword:output_type -> pb.FirstChangePasswordResponse
-	20, // 22: pb.OperatorService.RPCAdminForgotPassword:output_type -> AdminForgotPasswordResponse
-	21, // 23: pb.OperatorService.RPCOperatorRenewPassword:output_type -> OperatorRenewPasswordResponse
-	12, // [12:24] is the sub-list for method output_type
-	0,  // [0:12] is the sub-list for method input_type
+	11, // 12: pb.OperatorService.RPCLockOperator:input_type -> LockOperatorRequest
+	12, // 13: pb.OperatorService.RPCUnlockOperator:input_type -> UnlockOperatorRequest
+	13, // 14: pb.OperatorService.RPCOperatorHealthCheck:output_type -> pb.OperatorHealthCheckResponse
+	14, // 15: pb.OperatorService.RPCCreateAdmin:output_type -> pb.CreateOperatorResponse
+	14, // 16: pb.OperatorService.RPCCreateOperator:output_type -> pb.CreateOperatorResponse
+	15, // 17: pb.OperatorService.RPCVerifyOperator:output_type -> pb.VerifyOperatorResponse
+	16, // 18: pb.OperatorService.RPCGetOperator:output_type -> pb.GetOperatorResponse
+	17, // 19: pb.OperatorService.RPCGetOperatorList:output_type -> pb.GetOperatorListResponse
+	18, // 20: pb.OperatorService.RPCUpdateOperator:output_type -> UpdateOperatorResponse
+	19, // 21: pb.OperatorService.RPCResendOperatorVerification:output_type -> ResendOperatorVerificationResponse
+	20, // 22: pb.OperatorService.RPCCheckAdminExisting:output_type -> pb.CheckAdminExistingResponse
+	21, // 23: pb.OperatorService.RPCFirstChangePassword:output_type -> pb.FirstChangePasswordResponse
+	22, // 24: pb.OperatorService.RPCAdminForgotPassword:output_type -> AdminForgotPasswordResponse
+	23, // 25: pb.OperatorService.RPCOperatorRenewPassword:output_type -> OperatorRenewPasswordResponse
+	24, // 26: pb.OperatorService.RPCLockOperator:output_type -> LockOperatorResponse
+	25, // 27: pb.OperatorService.RPCUnlockOperator:output_type -> UnlockOperatorResponse
+	14, // [14:28] is the sub-list for method output_type
+	0,  // [0:14] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -111,6 +121,8 @@ func file_operator_service_proto_init() {
 	file_rpc_operator_health_check_proto_init()
 	file_rpc_admin_forgot_password_proto_init()
 	file_rpc_operator_renew_password_proto_init()
+	file_rpc_lock_operator_proto_init()
+	file_rpc_unlock_operator_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
