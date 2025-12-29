@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message CreateEmployeeRequest {
+  string name = 1;
+  string email = 2;
+  google.protobuf.Timestamp birthdate = 3;
+  string phone = 4;
+  string position = 5;
+  string department = 6;
+  string picture_url = 7;
+  string biography = 8;
+  string status = 9;
+}
+
+message CreateEmployeeResponse {
+  int64 employee_id = 1;
+}

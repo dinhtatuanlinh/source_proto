@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message DeleteEmployeeRequest {
+  int64 employee_id = 1;
+}
+
+message DeleteEmployeeResponse {
+}

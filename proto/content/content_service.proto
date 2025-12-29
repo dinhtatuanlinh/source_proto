@@ -44,6 +44,11 @@ import "rpc_get_product.proto";
 import "rpc_get_products.proto";
 import "rpc_add_product_image.proto";
 import "rpc_remove_product_image.proto";
+import "rpc_create_employee.proto";
+import "rpc_get_employee.proto";
+import "rpc_get_employees.proto";
+import "rpc_update_employee.proto";
+import "rpc_delete_employee.proto";
 
 option go_package = "github.com/dinhtatuanlinh/source_proto";
 
@@ -132,6 +137,16 @@ service ContentService {
   rpc RPCGetProducts (GetProductsRequest) returns (GetProductsResponse) {}
   // CT000041
   rpc RPCAddProductImage (AddProductImageRequest) returns (AddProductImageResponse) {}
-  // CT000041
+  // CT000042
   rpc RPCRemoveProductImage (RemoveProductImageRequest) returns (RemoveProductImageResponse) {}
+  // CT000043
+  rpc RPCCreateEmployee (CreateEmployeeRequest) returns (CreateEmployeeResponse) {}
+  // CT000044
+  rpc RPCGetEmployee (GetEmployeeRequest) returns (GetEmployeeResponse) {}
+  // CT000045
+  rpc RPCGetEmployees (GetEmployeesRequest) returns (GetEmployeesResponse) {}
+  // CT000046
+  rpc RPCUpdateEmployee (UpdateEmployeeRequest) returns (UpdateEmployeeResponse) {}
+  // CT000047
+  rpc RPCDeleteEmployee (DeleteEmployeeRequest) returns (DeleteEmployeeResponse) {}
 }

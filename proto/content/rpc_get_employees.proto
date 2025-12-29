@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package pb;
+
+import "employee.proto";
+
+option go_package = "github.com/dinhtatuanlinh/source_proto";
+
+message GetEmployeesRequest {
+  optional string department = 1;
+  optional string status = 2;
+  optional string search = 3;
+}
+
+message GetEmployeesResponse {
+  repeated Employee employees = 1;
+}
