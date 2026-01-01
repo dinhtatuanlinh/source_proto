@@ -27,6 +27,7 @@ message Role {
   optional int32 operator = 3;
   optional int32 post = 4;
   optional int32 notification = 5;
+  optional int32 employee = 6;
 }
 
 message OperatorList {

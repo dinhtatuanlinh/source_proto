@@ -17,6 +17,7 @@ message UpdateRole {
   optional int32 operator = 2;
   optional int32 post = 3;
   optional int32 notification = 4;
+  optional int32 employee = 5;
 }
 
 message UpdateOperatorResponse {

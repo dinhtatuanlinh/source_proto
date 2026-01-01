@@ -10,11 +10,11 @@ proto:
     --go-grpc_opt=paths=source_relative proto/error_detail/*.proto
 push:
 	git add .
-	git commit -m "add employee"
-	git tag v1.0.55
-	git push origin v1.0.55
+	git commit -m "add employee role"
+	git tag v1.0.56
+	git push origin v1.0.56
 	git checkout master
-	git merge v1.0.55
+	git merge v1.0.56
 	git push origin master
 
 .PHONY: proto push
