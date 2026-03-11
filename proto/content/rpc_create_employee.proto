@@ -8,13 +8,13 @@ option go_package = "github.com/dinhtatuanlinh/source_proto";
 
 message CreateEmployeeRequest {
   string name = 1;
-  string email = 2;
-  google.protobuf.Timestamp birthdate = 3;
-  string phone = 4;
-  string position = 5;
-  string department = 6;
-  string picture_url = 7;
-  string biography = 8;
+  optional string email = 2;
+  optional google.protobuf.Timestamp birthdate = 3;
+  optional string phone = 4;
+  optional string position = 5;
+  optional string department = 6;
+  optional string picture_url = 7;
+  optional string biography = 8;
   string status = 9;
 }
 
