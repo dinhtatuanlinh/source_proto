@@ -18,6 +18,9 @@ message Post {
   repeated PostCategory categories = 9;
   repeated PostTag tags = 10;
   google.protobuf.Timestamp created_at = 11;
+  string en_title = 12;
+  string en_description = 13;
+  string en_content = 14;
 }
 
 message PostCategory {

@@ -14,6 +14,9 @@ message CreatePostRequest {
   string thumbnail_url = 5;
   optional google.protobuf.Timestamp published_at = 6;
   string status = 7;
+  string en_title = 8;
+  string en_description = 9;
+  string en_content = 10;
 }
 
 message CreatePostResponse {
