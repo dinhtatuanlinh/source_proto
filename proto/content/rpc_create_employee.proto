@@ -16,6 +16,10 @@ message CreateEmployeeRequest {
   optional string picture_url = 7;
   optional string biography = 8;
   string status = 9;
+  string title = 10;
+  string en_title = 11;
+  string en_position = 12;
+  string en_biography = 13;
 }
 
 message CreateEmployeeResponse {

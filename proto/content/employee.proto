@@ -17,4 +17,8 @@ message Employee {
   optional string picture_url = 8;
   optional string biography = 9;
   string status = 10;
+  string title = 11;
+  string en_title = 12;
+  string en_position = 13;
+  string en_biography = 14;
 }
