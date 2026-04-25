@@ -16,7 +16,7 @@ message Employee {
   optional string department = 7;
   optional string picture_url = 8;
   optional string biography = 9;
-  optional string status = 10;
+  string status = 10;
   optional string title = 11;
   optional string en_title = 12;
   optional string en_position = 13;

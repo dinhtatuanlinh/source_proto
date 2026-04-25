@@ -11,10 +11,10 @@ proto:
 push:
 	git add .
 	git commit -m "update english verion for employee"
-	git tag v1.0.60
-	git push origin v1.0.60
+	git tag v1.0.61
+	git push origin v1.0.61
 	git checkout master
-	git merge v1.0.60
+	git merge v1.0.61
 	git push origin master
 
 .PHONY: proto push
